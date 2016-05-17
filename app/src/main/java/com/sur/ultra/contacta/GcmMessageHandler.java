@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -85,7 +84,7 @@ public class GcmMessageHandler extends GcmListenerService {
     /*Comienzo copia GCM*/
 
     private void sendNotification(String message) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, InboxActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
