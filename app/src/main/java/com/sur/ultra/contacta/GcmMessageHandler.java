@@ -2,13 +2,16 @@ package com.sur.ultra.contacta;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -44,8 +47,28 @@ public class GcmMessageHandler extends GcmListenerService {
          * that a message was received.
          */
 
+        SaveMessage(message);
+
         sendNotification(message);
     }
+
+    public void SaveMessage(String Content){
+        BaseHelper baseHelper = new BaseHelper(this, "ContactaDB", null, 1);
+
+        SQLiteDatabase db = baseHelper.getWritableDatabase();
+
+        if(db!=null){
+            ContentValues newRecord = new ContentValues();
+
+            newRecord.put("Content", Content);
+            long i = db.insert("Mensajes", null, newRecord);
+
+            if (i>0){
+                Log.d(TAG, "Epale");
+//                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
 //    // Creates notification based on title and body received
 //    private void createNotification(String title, String body) {
