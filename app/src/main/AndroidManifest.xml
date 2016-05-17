@@ -4,10 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <permission android:name="com.sur.ultra.contacta.C2D_MESSAGE"
+
+    <permission
+        android:name="com.sur.ultra.contacta.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.sur.ultra.contacta.C2D_MESSAGE" />
 
     <application
@@ -30,36 +32,43 @@
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.sur.ultra.contacta" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".GcmMessageHandler"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
         <service
-            android:name="com.sur.ultra.contacta.MyInstanceIDListenerService"
+            android:name=".MyInstanceIDListenerService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
-
         <service
-            android:name="com.sur.ultra.contacta.RegistrationIntentService"
+            android:name=".RegistrationIntentService"
             android:enabled="true"
-            android:exported="false">
-        </service>
+            android:exported="false"></service>
 
+        <activity
+            android:name=".InboxActivity"
+            android:label="@string/title_activity_inbox"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
