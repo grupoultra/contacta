@@ -1,5 +1,0 @@
-Server API Key
-AIzaSyAw1YBWAABkdzY2Cfgtfhor9CjCYFiltBQ
-
-Sender ID
-550447056123
