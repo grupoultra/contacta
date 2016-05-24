@@ -94,14 +94,6 @@ public class ProvidersActivity extends AppCompatActivity
 
         if (id == R.id.nav_inbox) {
             startActivity(new Intent(this, InboxActivity.class));
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

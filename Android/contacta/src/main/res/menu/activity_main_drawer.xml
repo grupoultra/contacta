@@ -15,7 +15,7 @@
     <group android:id="@+id/group_settings"
         android:checkableBehavior="single">
         <item android:id="@+id/navdrawer_item_settings"
-            android:icon="@android:drawable/ic_menu_sort_alphabetically"
+            android:icon="@drawable/ic_settings"
             android:title="Preferencias"/>
     </group>
 </menu>
