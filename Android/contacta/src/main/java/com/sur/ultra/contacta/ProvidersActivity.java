@@ -92,7 +92,9 @@ public class ProvidersActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_inbox) {
+        if (id == R.id.nav_news) {
+            startActivity(new Intent(this, InboxActivity.class));
+        } else if (id == R.id.nav_messages) {
             startActivity(new Intent(this, InboxActivity.class));
         }
 

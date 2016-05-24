@@ -158,7 +158,12 @@ public class InboxActivity extends AppCompatActivity
 
         if (id == R.id.nav_providers) {
             startActivity(new Intent(this, ProvidersActivity.class));
-            Log.d(TAG, "Click en proveedores en Inbox Activity");
+        } else if (id == R.id.nav_news) {
+            startActivity(new Intent(this, InboxActivity.class));
+        } else if (id == R.id.nav_messages) {
+            startActivity(new Intent(this, InboxActivity.class));
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
