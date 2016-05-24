@@ -47,7 +47,7 @@
         <service
             android:name=".RegistrationIntentService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity
             android:name=".InboxActivity"
@@ -63,7 +63,15 @@
             android:name=".ProvidersActivity"
             android:label="Proveedores"
             android:parentActivityName=".InboxActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".InboxActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.InboxActivity" />
         </activity>
     </application>
 
