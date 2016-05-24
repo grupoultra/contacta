@@ -137,16 +137,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_inbox) {
-            startActivity(new Intent(this, InboxActivity.class));
-        } else if (id == R.id.nav_providers) {
+        if (id == R.id.nav_providers) {
             Log.d(TAG, "Click en proveedores en Main Activity"  );
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

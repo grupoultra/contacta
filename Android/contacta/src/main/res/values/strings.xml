@@ -14,4 +14,5 @@
     <string name="title_activity_inbox">Buzón</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="action_inbox">Inbox</string>
+    <string name="title_activity_settings">Configuración</string>
 </resources>
