@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity
 //                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                            .setAction("Action", null).show();
 
-                    startActivity(new Intent(MainActivity.this, InboxActivity.class));
+                    startActivity(new Intent(MainActivity.this, NewsActivity.class));
                 }
             });
         }

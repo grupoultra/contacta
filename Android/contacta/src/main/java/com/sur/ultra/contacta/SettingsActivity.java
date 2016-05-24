@@ -2,10 +2,6 @@ package com.sur.ultra.contacta;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -76,9 +72,9 @@ public class SettingsActivity extends AppCompatActivity
         if (id == R.id.nav_providers) {
             startActivity(new Intent(this, ProvidersActivity.class));
         } else if (id == R.id.nav_news) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_messages) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         }

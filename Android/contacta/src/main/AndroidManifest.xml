@@ -24,6 +24,7 @@
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
                 <category android:name="com.sur.ultra.contacta" />
             </intent-filter>
@@ -50,7 +51,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".InboxActivity"
+            android:name=".NewsActivity"
             android:label="@string/title_activity_inbox"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -62,16 +63,16 @@
         <activity
             android:name=".ProvidersActivity"
             android:label="Proveedores"
-            android:parentActivityName=".InboxActivity"
+            android:parentActivityName=".NewsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".InboxActivity"
+            android:parentActivityName=".NewsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.InboxActivity" />
+                android:value=".NewsActivity" />
         </activity>
     </application>
 

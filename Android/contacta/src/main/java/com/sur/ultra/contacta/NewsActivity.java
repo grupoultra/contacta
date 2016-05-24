@@ -1,7 +1,6 @@
 package com.sur.ultra.contacta;
 
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -10,11 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,13 +21,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-public class InboxActivity extends AppCompatActivity
+public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
@@ -159,9 +153,9 @@ public class InboxActivity extends AppCompatActivity
         if (id == R.id.nav_providers) {
             startActivity(new Intent(this, ProvidersActivity.class));
         } else if (id == R.id.nav_news) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_messages) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         }

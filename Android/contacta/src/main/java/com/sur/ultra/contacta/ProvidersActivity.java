@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -93,9 +92,9 @@ public class ProvidersActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_news) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_messages) {
-            startActivity(new Intent(this, InboxActivity.class));
+            startActivity(new Intent(this, NewsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
