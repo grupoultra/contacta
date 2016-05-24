@@ -3,9 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_inbox"
-            android:icon="@drawable/ic_menu_inbox"
-            android:title="Buzón" />
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_horn"
+            android:title="Noticias" />
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="Mensajes" />
         <item
             android:id="@+id/nav_providers"
             android:icon="@drawable/ic_work"
@@ -14,7 +18,7 @@
 
     <group android:id="@+id/group_settings"
         android:checkableBehavior="single">
-        <item android:id="@+id/navdrawer_item_settings"
+        <item android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="Preferencias"/>
     </group>
