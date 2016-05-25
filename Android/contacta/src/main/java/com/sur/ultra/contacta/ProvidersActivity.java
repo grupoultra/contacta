@@ -11,14 +11,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.Date;
 
 /**
  * Created by alexis on 5/23/16.
  */
 public class ProvidersActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    CProvider[] myCProviderList = new CProvider[]{
+            new CProvider("Banco Mercantil", true, "avatar"),
+            new CProvider("Cantv", true, "avatar"),
+            new CProvider("Movistar de Venezuela", true, "avatar"),
+            new CProvider("GMVV", true, "avatar"),
+            new CProvider("LaIguana.TV", true, "avatar"),
+            new CProvider("Banco Provincial", true, "avatar"),
+    };
+
+    private ListView mListView = null;
+    private CProviderAdapter mCProviderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +60,19 @@ public class ProvidersActivity extends AppCompatActivity
     }
 
     public void load(){
-        BaseHelper baseHelper = new BaseHelper(this, "ContactaDB", null, 1);
+        mListView = (ListView) findViewById(R.id.listProviders);
+        mCProviderAdapter = new CProviderAdapter(this, R.layout.providers_row, myCProviderList);
 
-        String[] arreglo = {"Banco Mercantil", "Movistar de Venezuela", "CANTV", "GMVV", "LaIguana.TV" };
+        if (mListView != null) {
+            mListView.setAdapter(mCProviderAdapter);
+        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arreglo);
-        ListView lista = (ListView) findViewById(R.id.listProviders);
-
-        lista.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+                Toast.makeText(ProvidersActivity.this, myCProviderList[i].messageSummary, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
