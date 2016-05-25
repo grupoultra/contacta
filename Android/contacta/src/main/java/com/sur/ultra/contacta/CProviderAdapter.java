@@ -39,15 +39,16 @@ public class CProviderAdapter extends ArrayAdapter<CProvider> {
         //get a reference to the different view elements we wish to update
         TextView nameView = (TextView) row.findViewById(R.id.nameTextView);
         TextView zipView = (TextView) row.findViewById(R.id.zipcodeTextView);
-        ImageView imageView = (ImageView) row.findViewById(R.id.imageView);
 
         //get the data from the data array
         CProvider cprovider = mData[position];
 
         //setting the view to reflect the data we need to display
         nameView.setText(cprovider.messageSummary);
-        int resId = mContext.getResources().getIdentifier(cprovider.image,"drawable",mContext.getPackageName());
-        imageView.setImageResource(resId);
+        ImageView avatarView = (ImageView) row.findViewById(R.id.imageView);
+        int avatarId = mContext.getResources().getIdentifier(cprovider.image,"drawable",mContext.getPackageName());
+        avatarView.setImageResource(avatarId);
+
         //returning the row view (because this is called getView after all)
         return row;
     }
