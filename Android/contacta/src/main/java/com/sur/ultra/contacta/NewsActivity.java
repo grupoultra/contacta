@@ -33,7 +33,7 @@ import java.util.Date;
 public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "NewsActivity";
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 //    private ProgressBar mRegistrationProgressBar;
