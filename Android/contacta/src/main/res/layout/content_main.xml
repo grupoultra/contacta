@@ -9,19 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.sur.ultra.contacta.MainActivity"
+    tools:context="com.sur.ultra.contacta.NewsActivity"
     tools:showIn="@layout/app_bar_main">
 
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:text="Hello World!" />-->
-
-
-    <TextView android:text="@string/registering_message" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/informationTextView"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ProgressBar
         android:layout_width="wrap_content"
