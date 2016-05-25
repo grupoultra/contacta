@@ -30,14 +30,12 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.Date;
 
-public class NewsActivity extends AppCompatActivity
+public class MessagesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final String TAG = "NewsActivity";
+    private static final String TAG = "MessagesActivity";
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
-//    private ProgressBar mRegistrationProgressBar;
-//    private TextView mInformationTextView;
     private boolean isReceiverRegistered;
 
     MessageListItem[] myMessagesList = new MessageListItem[]{
@@ -59,7 +57,7 @@ public class NewsActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inbox);
+        setContentView(R.layout.activity_messages);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -68,36 +66,6 @@ public class NewsActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        /* Comienzo copia de GCM*/
-//        mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
-        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-//                mRegistrationProgressBar.setVisibility(ProgressBar.GONE);
-                SharedPreferences sharedPreferences =
-                        PreferenceManager.getDefaultSharedPreferences(context);
-                boolean sentToken = sharedPreferences
-                        .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
-//                if (sentToken) {
-//                    mInformationTextView.setText(getString(R.string.gcm_send_message));
-//                } else {
-//                    mInformationTextView.setText(getString(R.string.token_error_message));
-//                }
-            }
-        };
-//        mInformationTextView = (TextView) findViewById(R.id.informationTextView);
-
-        // Registering BroadcastReceiver
-        registerReceiver();
-
-        if (checkPlayServices()) {
-            // Start IntentService to register this application with GCM.
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
-        /* FIN copia de GCM*/
-
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -116,7 +84,7 @@ public class NewsActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                Toast.makeText(NewsActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MessagesActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
             }
         });
     }

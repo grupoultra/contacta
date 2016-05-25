@@ -61,6 +61,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MessagesActivity"
+            android:label="@string/title_activity_messages"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".ProvidersActivity"
             android:label="Proveedores"
             android:parentActivityName=".NewsActivity"
