@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_messages">Mensajes</string>
-    <string name="title_activity_News">Noticias</string>
+    <string name="title_activity_news">Noticias</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
 </resources>
