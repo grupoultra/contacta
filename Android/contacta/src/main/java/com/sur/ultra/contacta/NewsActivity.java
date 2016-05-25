@@ -19,21 +19,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.util.Date;
+
 public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "NewsActivity";
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 //    private ProgressBar mRegistrationProgressBar;
 //    private TextView mInformationTextView;
     private boolean isReceiverRegistered;
+
+    MessageListItem[] myMessagesList = new MessageListItem[]{
+            new MessageListItem("Donec congue ligula vel auctor faucibus.", "Banco Mercantil", true, "avatar", new Date() ),
+            new MessageListItem("Nulla auctor ante ac diam ultrices blandit in gravida arcu.", "CANTV", true, "avatar", new Date()),
+            new MessageListItem("Sed at leo vehicula, rhoncus nulla vitae, dictum odio", "GMVV", true, "avatar", new Date()),
+            new MessageListItem("Proin eu dui dapibus, pharetra leo a, commodo velit.", "Banco Mercantil", true, "avatar", new Date()),
+            new MessageListItem("Aliquam eu nisl eu magna euismod ullamcorper.", "CANTV", true, "avatar", new Date()),
+            new MessageListItem("Nam eleifend augue eget lorem dapibus tincidunt.", "Movistar de Venezuela", true, "avatar", new Date()),
+            new MessageListItem("Proin sed massa a nisl pellentesque mattis.", "GMVV", true, "avatar", new Date()),
+            new MessageListItem("Cras sed velit sed velit viverra mollis.", "LaIguana.TV", true, "avatar", new Date()),
+            new MessageListItem("Aenean et diam dignissim, facilisis urna eget, venenatis urna.", "Banco Mercantil", true, "avatar", new Date())
+    };
+
+    private ListView mListView = null;
+    private MessageItemAdapter mMessageItemAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,32 +106,49 @@ public class NewsActivity extends AppCompatActivity
     }
 
     public void load(){
-        BaseHelper baseHelper = new BaseHelper(this, "ContactaDB", null, 1);
+        mListView = (ListView) findViewById(R.id.listInbox);
+        mMessageItemAdapter = new MessageItemAdapter(this, R.layout.messages_row, myMessagesList);
 
-        SQLiteDatabase db = baseHelper.getReadableDatabase();
-
-        if(db!=null){
-            Cursor c = db.rawQuery("SELECT * from Mensajes", null);
-
-            String [] arreglo = new String[c.getCount()];
-            int i = 0;
-
-            if (c.moveToFirst()){
-                do {
-                    String linea = c.getInt(0)+ " " + c.getString(1);
-
-                    arreglo[i] = linea;
-                    i++;
-
-                } while (c.moveToNext());
-            }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arreglo);
-            ListView lista = (ListView) findViewById(R.id.listInbox);
-
-            lista.setAdapter(adapter);
+        if (mListView != null) {
+            mListView.setAdapter(mMessageItemAdapter);
         }
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+                Toast.makeText(NewsActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
+//    public void load(){
+//        BaseHelper baseHelper = new BaseHelper(this, "ContactaDB", null, 1);
+//
+//        SQLiteDatabase db = baseHelper.getReadableDatabase();
+//
+//        if(db!=null){
+//            Cursor c = db.rawQuery("SELECT * from Mensajes", null);
+//
+//            String [] arreglo = new String[c.getCount()];
+//            int i = 0;
+//
+//            if (c.moveToFirst()){
+//                do {
+//                    String linea = c.getInt(0)+ " " + c.getString(1);
+//
+//                    arreglo[i] = linea;
+//                    i++;
+//
+//                } while (c.moveToNext());
+//            }
+//
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arreglo);
+//            ListView lista = (ListView) findViewById(R.id.listInbox);
+//
+//            lista.setAdapter(adapter);
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
