@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="6"
+    >
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/avatar"
-        android:padding="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+        android:padding="10dp"/>
 
-    <TextView
-        android:textColor="#030303"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Medium Text"
-        android:id="@+id/nameTextView"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="10dp" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+        <TextView
+            android:textColor="#030303"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Medium Text"
+            android:id="@+id/nameTextView"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical" />
 
-    <TextView
-        android:textColor="#b6b6b6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:textColor="#b6b6b6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:id="@+id/zipcodeTextView" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:paddingLeft="10dp"
-        android:text="Small Text"
-        android:id="@+id/zipcodeTextView"
-        android:layout_below="@+id/nameTextView"
-        android:layout_toRightOf="@+id/imageView"
-        android:textSize="11dp" />
-</RelativeLayout>
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/connectedView"
+            android:src="@drawable/ic_add_circle"
+            android:padding="10dp"/>
+    </FrameLayout>
+
+
+</LinearLayout>
