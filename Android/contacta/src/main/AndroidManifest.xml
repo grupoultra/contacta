@@ -52,7 +52,7 @@
 
         <activity
             android:name=".NewsActivity"
-            android:label="@string/title_activity_inbox"
+            android:label="@string/title_activity_news"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
