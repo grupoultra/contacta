@@ -46,9 +46,17 @@ public class MessageItemAdapter extends ArrayAdapter<MessageListItem> {
 
         //setting the view to reflect the data we need to display
         nameView.setText(message.messageSummary);
+
         zipView.setText(String.valueOf(message.author)); //always pay attention to your datatypes!
         int resId = mContext.getResources().getIdentifier(message.image,"drawable",mContext.getPackageName());
         imageView.setImageResource(resId);
+
+        String icon = message.connected ? "ic_check_circle" : "ic_add_circle";
+
+        ImageView connectedView = (ImageView) row.findViewById(R.id.connectedView);
+        int connectedId = mContext.getResources().getIdentifier(icon,"drawable",mContext.getPackageName());
+        connectedView.setImageResource(connectedId);
+
         //returning the row view (because this is called getView after all)
         return row;
     }

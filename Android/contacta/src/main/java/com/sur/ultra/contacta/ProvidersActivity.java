@@ -75,6 +75,10 @@ public class ProvidersActivity extends AppCompatActivity
         });
     }
 
+    public void confirmDisconnection(View view){
+        Toast.makeText(ProvidersActivity.this, "Agregar dialogo de eliminacion", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
