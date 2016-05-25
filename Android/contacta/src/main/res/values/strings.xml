@@ -5,7 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_messages">Noticias</string>
+    <string name="title_activity_messages">Mensajes</string>
+    <string name="title_activity_News">Noticias</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
 </resources>
