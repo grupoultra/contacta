@@ -193,7 +193,7 @@ public class NewsActivity extends AppCompatActivity
         } else if (id == R.id.nav_news) {
             startActivity(new Intent(this, NewsActivity.class));
         } else if (id == R.id.nav_messages) {
-            startActivity(new Intent(this, NewsActivity.class));
+            startActivity(new Intent(this, MessagesActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         }
