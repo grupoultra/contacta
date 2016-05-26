@@ -9,4 +9,5 @@
     <string name="title_activity_news">Noticias</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
+    <string name="title_activity_news_detail">Noticia</string>
 </resources>

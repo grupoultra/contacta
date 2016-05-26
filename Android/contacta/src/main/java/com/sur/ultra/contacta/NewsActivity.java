@@ -116,7 +116,8 @@ public class NewsActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                Toast.makeText(NewsActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(NewsActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(NewsActivity.this, NewsDetailActivity.class));
             }
         });
     }
