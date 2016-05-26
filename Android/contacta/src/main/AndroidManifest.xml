@@ -96,6 +96,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sur.ultra.contacta.MessagesActivity" />
         </activity>
+        <activity
+            android:name=".ProviderDetailsActivity"
+            android:label="@string/title_activity_provider_details"
+            android:parentActivityName=".ProvidersActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.ProvidersActivity" />
+        </activity>
     </application>
 
 </manifest>
