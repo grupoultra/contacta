@@ -1,9 +1,11 @@
 package com.sur.ultra.contacta;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -77,6 +79,22 @@ public class ProviderDetailsActivity extends AppCompatActivity {
     }
 
     public void confirmDisconnection(View view){
-        Toast.makeText(ProviderDetailsActivity.this, "Agregar dialogo de eliminacion", Toast.LENGTH_SHORT).show();
+
+        new AlertDialog.Builder(ProviderDetailsActivity.this)
+                .setTitle("Desconectar Nombre del proveedor")
+                .setMessage("¿Esta seguro de que desea desconectarse del proveedor?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ProviderDetailsActivity.this, "Eliminado", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ProviderDetailsActivity.this, ProvidersActivity.class));
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(ProvidersActivity.this, "No", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
