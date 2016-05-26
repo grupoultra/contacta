@@ -10,6 +10,7 @@
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
     <string name="title_activity_news_detail">Noticia</string>
-    <string name="title_activity_message_detail">Este es un mensaje</string>
+    <string name="title_activity_message_detail">Mensajes</string>
     <string name="title_activity_provider_details">Proveedor</string>
+    <string name="pick_toppings">Proveedor</string>
 </resources>
