@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
     android:weightSum="6"
     >
 
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/avatar"
+        android:tint="#666"
         android:padding="10dp"/>
 
     <LinearLayout
@@ -28,7 +30,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:id="@+id/nameTextView"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="3dp"
             android:layout_gravity="center_vertical" />
 
     </LinearLayout>
@@ -49,6 +51,8 @@
             android:id="@+id/button"
             android:layout_gravity="center_vertical"
             android:onClick="confirmDisconnection"
+            android:tint="#666"
+            android:background="?android:attr/selectableItemBackground"
             />
     </FrameLayout>
 
