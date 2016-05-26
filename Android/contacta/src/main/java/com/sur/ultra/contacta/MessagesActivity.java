@@ -40,14 +40,13 @@ public class MessagesActivity extends AppCompatActivity
 
     MessageListItem[] myMessagesList = new MessageListItem[]{
             new MessageListItem("Donec congue ligula vel auctor faucibus.", "Banco Mercantil", true, "avatar", new Date() ),
-            new MessageListItem("Nulla auctor ante ac diam ultrices blandit in gravida arcu.", "CANTV", true, "avatar", new Date()),
+            new MessageListItem("Aenean et diam dignissim, facilisis urna eget, venenatis urna.", "Banco Mercantil", true, "avatar", new Date()),
             new MessageListItem("Sed at leo vehicula, rhoncus nulla vitae, dictum odio", "GMVV", true, "avatar", new Date()),
-            new MessageListItem("Proin eu dui dapibus, pharetra leo a, commodo velit.", "Banco Mercantil", true, "avatar", new Date()),
             new MessageListItem("Aliquam eu nisl eu magna euismod ullamcorper.", "CANTV", true, "avatar", new Date()),
             new MessageListItem("Nam eleifend augue eget lorem dapibus tincidunt.", "Movistar de Venezuela", true, "avatar", new Date()),
             new MessageListItem("Proin sed massa a nisl pellentesque mattis.", "GMVV", true, "avatar", new Date()),
             new MessageListItem("Cras sed velit sed velit viverra mollis.", "LaIguana.TV", true, "avatar", new Date()),
-            new MessageListItem("Aenean et diam dignissim, facilisis urna eget, venenatis urna.", "Banco Mercantil", true, "avatar", new Date())
+            new MessageListItem("Nulla auctor ante ac diam ultrices blandit in gravida arcu.", "CANTV", true, "avatar", new Date())
     };
 
     private ListView mListView = null;
@@ -84,7 +83,7 @@ public class MessagesActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                Toast.makeText(MessagesActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MessagesActivity.this, ChatActivity.class));
             }
         });
     }

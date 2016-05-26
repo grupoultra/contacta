@@ -87,6 +87,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sur.ultra.contacta.NewsActivity" />
         </activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_message_detail"
+            android:parentActivityName=".MessagesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.MessagesActivity" />
+        </activity>
     </application>
 
 </manifest>
