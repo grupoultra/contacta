@@ -70,7 +70,8 @@ public class ProvidersActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                Toast.makeText(ProvidersActivity.this, myCProviderList[i].messageSummary, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ProvidersActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ProvidersActivity.this, ProviderDetailsActivity.class));
             }
         });
     }
