@@ -13,4 +13,5 @@
     <string name="title_activity_message_detail">Mensajes</string>
     <string name="title_activity_provider_details">Proveedor</string>
     <string name="pick_toppings">Proveedor</string>
+    <string name="title_activity_initialization">Initializacion</string>
 </resources>
