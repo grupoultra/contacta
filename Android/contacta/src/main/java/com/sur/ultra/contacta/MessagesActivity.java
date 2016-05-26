@@ -1,15 +1,13 @@
 package com.sur.ultra.contacta;
 
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,13 +19,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MessagesActivity extends AppCompatActivity
@@ -130,7 +128,8 @@ public class MessagesActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inbox, menu);
+        getMenuInflater().inflate(R.menu.messages, menu);
+
         return true;
     }
 
@@ -142,8 +141,22 @@ public class MessagesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_sort) {
+            final ArrayList mSelectedItems = new ArrayList();  // Where we track the selected items
+
+            new AlertDialog.Builder(MessagesActivity.this)
+                    .setTitle("Ordenar")
+                    .setPositiveButton("Por proveedor", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MessagesActivity.this, "Ordenado por proveedor", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Por fecha", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MessagesActivity.this, "Ordenado por fecha", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -167,32 +180,6 @@ public class MessagesActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-
-
-    private void registerReceiver(){
-        if(!isReceiverRegistered) {
-            LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                    new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
-            isReceiverRegistered = true;
-        }
-    }
-
-    private boolean checkPlayServices() {
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (apiAvailability.isUserResolvableError(resultCode)) {
-                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
-                        .show();
-            } else {
-                Log.i(TAG, "This device is not supported.");
-                finish();
-            }
-            return false;
-        }
         return true;
     }
 }
