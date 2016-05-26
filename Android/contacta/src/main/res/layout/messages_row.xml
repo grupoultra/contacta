@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/avatar"
-        android:padding="10dp"/>
+        android:padding="20dp"
+        android:tint="#777"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="4"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="10dp">
         <TextView
@@ -27,7 +28,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Medium Text"
             android:id="@+id/nameTextView"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center_vertical" />
 
         <TextView
@@ -52,7 +53,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/connectedView"
             android:src="@drawable/ic_add_circle"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:tint="#777"/>
     </FrameLayout>
 
 
