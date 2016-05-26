@@ -11,4 +11,5 @@
     <string name="title_activity_settings">Configuración</string>
     <string name="title_activity_news_detail">Noticia</string>
     <string name="title_activity_message_detail">Este es un mensaje</string>
+    <string name="title_activity_provider_details">Proveedor</string>
 </resources>
