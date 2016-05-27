@@ -14,4 +14,10 @@
     <string name="title_activity_provider_details">Proveedor</string>
     <string name="pick_toppings">Proveedor</string>
     <string name="title_activity_initialization">Inicializacion</string>
+    <string name="title_activity_new_initialization">NewInitializationActivity</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="aceptar">ACEPTAR</string>
+    <string name="ingrese_el_codigo">Ingrese el codigo</string>
+    <string name="contacta_le_llamara_en">Contacta le llamara en:</string>
+    <string name="hemos_enviado_codigo">Hemos enviado un codigo por SMS al:</string>
 </resources>
