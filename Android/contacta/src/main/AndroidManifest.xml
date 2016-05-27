@@ -105,6 +105,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sur.ultra.contacta.ProvidersActivity" />
         </activity>
+        <activity
+            android:name=".InitializationActivity"
+            android:label="@string/title_activity_initialization"
+            android:parentActivityName=".NewsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.NewsActivity" />
+        </activity>
+        <activity
+            android:name=".NewInitializationActivity"
+            android:label="@string/title_activity_new_initialization"
+            android:parentActivityName=".InitializationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sur.ultra.contacta.InitializationActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -176,6 +176,8 @@ public class MessagesActivity extends AppCompatActivity
             startActivity(new Intent(this, MessagesActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+        } else if (id == R.id.nav_initialization) {
+            startActivity(new Intent(this, InitializationActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
