@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 public class NewInitializationActivity extends AppCompatActivity {
 
@@ -17,6 +18,14 @@ public class NewInitializationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void acceptInitialization(View view){
+        Toast.makeText(NewInitializationActivity.this, "Accept", Toast.LENGTH_SHORT).show();
+    }
+
+    public void cancelInitialization(View view){
+        Toast.makeText(NewInitializationActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
     }
 
 }
