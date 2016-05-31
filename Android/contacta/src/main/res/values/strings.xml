@@ -20,4 +20,5 @@
     <string name="ingrese_el_codigo">Ingrese el codigo</string>
     <string name="contacta_le_llamara_en">Contacta le llamara en:</string>
     <string name="hemos_enviado_codigo">Hemos enviado un codigo por SMS al:</string>
+    <string name="title_activity_search_providers">Buscar proveedor</string>
 </resources>
