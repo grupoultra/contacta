@@ -8,25 +8,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sur.ultra.contacta.Models.Provider;
+import com.sur.ultra.contacta.Models.Providers;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by alexis on 5/24/16.
  */
-public class CProviderAdapter extends ArrayAdapter<CProvider> {
+public class CProviderAdapter extends ArrayAdapter<Provider> {
 
     Context mContext;
     int mLayoutResourceId;
-    CProvider mData[] = null;
+    List<Provider> mData;
 
-    public CProviderAdapter(Context context, int resource, CProvider[] data) {
+    public CProviderAdapter(Context context, int resource, ArrayList<Provider> data) {
         super(context, resource, data);
         this.mContext = context;
         this.mLayoutResourceId = resource;
         this.mData = data;
-    }
-
-    @Override
-    public CProvider getItem(int position) {
-        return super.getItem(position);
     }
 
     @Override
@@ -41,12 +42,12 @@ public class CProviderAdapter extends ArrayAdapter<CProvider> {
         TextView zipView = (TextView) row.findViewById(R.id.zipcodeTextView);
 
         //get the data from the data array
-        CProvider cprovider = mData[position];
+        Provider cprovider = mData.get(position);
 
         //setting the view to reflect the data we need to display
-        nameView.setText(cprovider.messageSummary);
+        nameView.setText(cprovider.getName());
         ImageView avatarView = (ImageView) row.findViewById(R.id.imageView);
-        int avatarId = mContext.getResources().getIdentifier(cprovider.image,"drawable",mContext.getPackageName());
+        int avatarId = mContext.getResources().getIdentifier(cprovider.getAvatar(),"drawable",mContext.getPackageName());
         avatarView.setImageResource(avatarId);
 
         //returning the row view (because this is called getView after all)
