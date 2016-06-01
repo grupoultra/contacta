@@ -1,15 +1,11 @@
 package com.sur.ultra.contacta;
 
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,12 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import java.util.Date;
+import com.sur.ultra.contacta.Models.Providers;
 
 /**
  * Created by alexis on 5/23/16.
@@ -43,6 +38,8 @@ public class ProvidersActivity extends AppCompatActivity
             new CProvider("LaIguana.TV", true, "avatar"),
             new CProvider("Banco Provincial", true, "avatar"),
     };
+
+    Providers providers = new Providers();
 
     private ListView mListView = null;
     private CProviderAdapter mCProviderAdapter;
@@ -80,7 +77,7 @@ public class ProvidersActivity extends AppCompatActivity
 
     public void load(){
         mListView = (ListView) findViewById(R.id.listProviders);
-        mCProviderAdapter = new CProviderAdapter(this, R.layout.providers_row, myCProviderList);
+        mCProviderAdapter = new CProviderAdapter(this, R.layout.providers_row, providers.getAll());
 
         if (mListView != null) {
             mListView.setAdapter(mCProviderAdapter);
