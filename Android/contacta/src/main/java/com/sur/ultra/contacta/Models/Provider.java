@@ -17,6 +17,10 @@ public class Provider {
         this.avatar = avatar;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
