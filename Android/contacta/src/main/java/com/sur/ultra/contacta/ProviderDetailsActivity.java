@@ -7,11 +7,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sur.ultra.contacta.Models.Provider;
+import com.sur.ultra.contacta.Models.Providers;
 
 import java.util.Date;
 
@@ -34,11 +38,16 @@ public class ProviderDetailsActivity extends AppCompatActivity {
             });
         }
 
+        Providers providers = new Providers();
+
+        Provider provider = providers.getOne(getIntent().getExtras().getString("ProviderId"));
 
         TextView nameView = (TextView) findViewById(R.id.providerInfo);
-        nameView.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed congue justo, vel pulvinar nunc. Morbi ultricies porta dolor a auctor. Mauris vel lorem imperdiet, sagittis leo at, faucibus justo. Vestibulum id lacus lorem. Proin ipsum sem, dignissim vel luctus porttitor, condimentum vel purus. Integer id efficitur arcu, quis venenatis neque. Proin metus dui, mattis ac ullamcorper ac, vehicula ut metus. Aenean mattis, nunc malesuada suscipit ultrices, leo diam porta nulla, quis iaculis elit augue vel odio. Sed dapibus augue et mi vulputate, auctor malesuada dui suscipit. Integer id urna fermentum, sollicitudin orci a, eleifend est. Quisque suscipit eget velit eget hendrerit. Fusce mi leo, tempus porta eleifend sed, aliquet sit amet eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus et dolor lacus. Integer hendrerit, tellus ac posuere congue, augue augue ultrices risus, quis convallis justo diam et urna.\n" +
-                "\n" +
-                "Maecenas congue, odio sed sodales dictum, diam risus efficitur nisl, ac venenatis nisl arcu et dolor. Etiam vel tristique turpis. Pellentesque lectus felis, porttitor at porttitor ut, cursus id mauris. Vivamus elit augue, porttitor vel vulputate nec, varius feugiat est. Vivamus et egestas diam, vel sollicitudin lorem. Vivamus diam libero, egestas et semper quis, iaculis sit amet enim. In hac habitasse platea dictumst. Proin pretium lacus ac ullamcorper finibus.");
+        if (nameView != null) {
+            nameView.setText(provider.getInfo());
+        }
+
+        setTitle(provider.getName());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         load();
