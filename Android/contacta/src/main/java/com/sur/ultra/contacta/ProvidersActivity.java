@@ -22,7 +22,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.sur.ultra.contacta.Models.Provider;
 import com.sur.ultra.contacta.Models.Providers;
+
+import java.util.ArrayList;
 
 /**
  * Created by alexis on 5/23/16.
@@ -77,7 +80,10 @@ public class ProvidersActivity extends AppCompatActivity
 
     public void load(){
         mListView = (ListView) findViewById(R.id.listProviders);
-        mCProviderAdapter = new CProviderAdapter(this, R.layout.providers_row, providers.getAll());
+
+        final ArrayList<Provider> providersList = providers.getAllList();
+
+        mCProviderAdapter = new CProviderAdapter(this, R.layout.providers_row, providersList);
 
         if (mListView != null) {
             mListView.setAdapter(mCProviderAdapter);
@@ -86,8 +92,9 @@ public class ProvidersActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-//                Toast.makeText(ProvidersActivity.this, myMessagesList[i].author, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ProvidersActivity.this, ProviderDetailsActivity.class));
+                Intent clickProviderIntent = new Intent(ProvidersActivity.this, ProviderDetailsActivity.class);
+                clickProviderIntent.putExtra("ProviderId", providersList.get(i).getId());
+                startActivity(clickProviderIntent);
             }
         });
     }
