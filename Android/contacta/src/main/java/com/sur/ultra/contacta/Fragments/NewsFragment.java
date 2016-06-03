@@ -37,7 +37,7 @@ public class NewsFragment extends android.support.v4.app.Fragment {
         linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        MessageAdapter adaptador = new MessageAdapter(Message.NEWS);
+        MessageAdapter adaptador = new MessageAdapter(Message.NEWS, getActivity(), null);
         reciclador.setAdapter(adaptador);
         reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 

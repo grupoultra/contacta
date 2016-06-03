@@ -1,6 +1,7 @@
 package com.sur.ultra.contacta;
 
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,10 +18,13 @@ import android.widget.Toast;
 
 import com.sur.ultra.contacta.Fragments.InboxFragment;
 import com.sur.ultra.contacta.Fragments.InitializationFragment;
+import com.sur.ultra.contacta.Fragments.MessagesFragment;
+import com.sur.ultra.contacta.Fragments.NewsDetailFragment;
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
-public class InboxActivity extends AppCompatActivity {
+public class InboxActivity extends AppCompatActivity
+        implements MessagesFragment.OnHeadlineSelectedListener {
 
     private DrawerLayout drawerLayout;
 
@@ -139,5 +143,17 @@ public class InboxActivity extends AppCompatActivity {
                         .show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onArticleSelected(int position) {
+        Fragment fragmentoGenerico = null;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentoGenerico = new NewsDetailFragment();
+
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.contenedor_principal, fragmentoGenerico)
+                .commit();
     }
 }
