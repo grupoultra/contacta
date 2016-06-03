@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
 
 
 /**
@@ -35,6 +36,8 @@ public class ProvidersFragment extends Fragment {
 
         adaptador = new ProvidersAdapter();
         reciclador.setAdapter(adaptador);
+        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
+
         return view;
     }
 
