@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Contacta</string>
 
-    <string name="title_activity_inbox">Contacta</string>
+    <string name="title_activity_inbox">Buzón</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
     <string name="title_activity_initialization">Inicializacion</string>

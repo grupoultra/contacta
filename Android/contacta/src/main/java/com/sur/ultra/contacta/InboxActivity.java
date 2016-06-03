@@ -82,11 +82,14 @@ public class InboxActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (itemDrawer.getItemId()) {
-            case R.id.item_inicio:
+            case R.id.nav_inbox:
                 fragmentoGenerico = new InboxFragment();
                 break;
-            case R.id.item_cuenta:
+            case R.id.nav_providers:
                 fragmentoGenerico = new ProvidersFragment();
+                break;
+            case R.id.nav_settings:
+                fragmentoGenerico = new SettingsFragment();
                 break;
         }
         if (fragmentoGenerico != null) {
