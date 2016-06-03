@@ -91,6 +91,9 @@ public class InboxActivity extends AppCompatActivity {
             case R.id.nav_settings:
                 fragmentoGenerico = new SettingsFragment();
                 break;
+            case R.id.nav_initialization:
+                fragmentoGenerico = new InitializationFragment();
+                break;
         }
         if (fragmentoGenerico != null) {
             fragmentManager
@@ -118,8 +121,6 @@ public class InboxActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_sort:
-                final ArrayList mSelectedItems = new ArrayList();  // Where we track the selected items
-
                 new AlertDialog.Builder(InboxActivity.this)
                         .setTitle("Ordenar")
                         .setPositiveButton("Por proveedor", new DialogInterface.OnClickListener() {
