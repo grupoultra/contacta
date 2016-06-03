@@ -1,19 +1,13 @@
 package com.sur.ultra.contacta.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sur.ultra.contacta.Fragments.MessagesFragment;
-import com.sur.ultra.contacta.Fragments.NewsDetailFragment;
-import com.sur.ultra.contacta.Fragments.NewsFragment;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
 
@@ -26,12 +20,12 @@ import java.util.List;
 public class MessageAdapter
         extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
-    private final List<Message> items;
+    private final List<Message> messages;
     private Context ctx;
     private MessagesFragment.OnHeadlineSelectedListener mCallback;
 
-    public MessageAdapter(List<Message> items, Context ctx, MessagesFragment.OnHeadlineSelectedListener mCallback) {
-        this.items = items;
+    public MessageAdapter(List<Message> messages, Context ctx, MessagesFragment.OnHeadlineSelectedListener mCallback) {
+        this.messages = messages;
         this.ctx = ctx;
         this.mCallback = mCallback;
     }
@@ -62,26 +56,24 @@ public class MessageAdapter
         public void onClick(View v) {
             int position = getAdapterPosition();
             mCallback.onArticleSelected(3);
-//            Log.d("mydebugger", String.valueOf(v.getContext().getClass()));
-//            Toast.makeText(v.getContext(), "Item seleccionado", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return messages.size();
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_message_list, viewGroup, false);
-        return new ViewHolder(v,this.ctx, this.items, mCallback );
+        return new ViewHolder(v,this.ctx, this.messages, mCallback );
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Message item = items.get(i);
+        Message item = messages.get(i);
         viewHolder.messageSummary.setText(item.messageSummary);
         viewHolder.author.setText(item.author);
     }
