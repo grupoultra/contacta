@@ -19,11 +19,13 @@ import com.sur.ultra.contacta.Fragments.InboxFragment;
 import com.sur.ultra.contacta.Fragments.InitializationFragment;
 import com.sur.ultra.contacta.Fragments.MessagesFragment;
 import com.sur.ultra.contacta.Fragments.NewsDetailFragment;
+import com.sur.ultra.contacta.Fragments.ProviderDetailFragment;
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
 public class InboxActivity extends AppCompatActivity
-        implements MessagesFragment.OnMessageSelectedListener {
+        implements MessagesFragment.OnMessageSelectedListener,
+                   ProvidersFragment.OnProviderSelectedListener {
 
     private DrawerLayout drawerLayout;
 
@@ -149,6 +151,18 @@ public class InboxActivity extends AppCompatActivity
         Fragment fragmentoGenerico = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentoGenerico = new NewsDetailFragment();
+
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.contenedor_principal, fragmentoGenerico)
+                .commit();
+    }
+
+    @Override
+    public void onProviderSelected(int position) {
+        Fragment fragmentoGenerico = null;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentoGenerico = new ProviderDetailFragment();
 
         fragmentManager
                 .beginTransaction()
