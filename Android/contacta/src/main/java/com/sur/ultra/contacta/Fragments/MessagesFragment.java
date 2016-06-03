@@ -25,8 +25,6 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         void onMessageSelected(int position);
     }
 
-    private LinearLayoutManager linearLayout;
-
     public MessagesFragment() {
 
     }
@@ -57,7 +55,7 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragments_recycler_view, container, false);
 
         RecyclerView reciclador = (RecyclerView)view.findViewById(R.id.reciclador);
-        linearLayout = new LinearLayoutManager(getActivity());
+        LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
         MessageAdapter adaptador = new MessageAdapter(Message.MESSAGES, getActivity(), mCallback);
