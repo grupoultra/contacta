@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sur.ultra.contacta.R;
-import com.sur.ultra.contacta.TabsAdapter;
+import com.sur.ultra.contacta.Adapters.TabsAdapter;
 
 
 /**

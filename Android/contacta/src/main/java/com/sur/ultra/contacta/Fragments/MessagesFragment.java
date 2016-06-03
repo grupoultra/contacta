@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sur.ultra.contacta.MessageAdapter;
+import com.sur.ultra.contacta.Adapters.MessageAdapter;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
 import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;

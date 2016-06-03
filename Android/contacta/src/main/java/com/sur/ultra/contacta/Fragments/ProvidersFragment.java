@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sur.ultra.contacta.ProvidersAdapter;
+import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.R;
 
 
