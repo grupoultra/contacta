@@ -3,8 +3,10 @@ package com.sur.ultra.contacta.Fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +66,14 @@ public class ProviderDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_provider_detail, container, false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Contacta");
+
+        View view = inflater.inflate(R.layout.fragment_provider_detail, container, false);
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Proveedor");
+
+        return view;
     }
 
 }
