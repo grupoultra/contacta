@@ -53,7 +53,7 @@ public class InboxFragment extends Fragment {
 
     private void poblarViewPager(ViewPager viewPager) {
         TabsAdapter adapter = new TabsAdapter(getFragmentManager());
-        adapter.addFragment(new NewsFragment(), getString(R.string.title_activity_news));
+        adapter.addFragment(new MessagesFragment(), getString(R.string.title_activity_news));
         adapter.addFragment(new MessagesFragment(), getString(R.string.title_activity_messages));
         viewPager.setAdapter(adapter);
     }
