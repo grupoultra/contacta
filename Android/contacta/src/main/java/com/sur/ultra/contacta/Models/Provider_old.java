@@ -3,14 +3,14 @@ package com.sur.ultra.contacta.Models;
 /**
  * Created by alexis on 6/1/16.
  */
-public class Provider {
+public class Provider_old {
 
     private String id;
     private String name;
     private String info;
     private String avatar;
 
-    public Provider(String id, String name, String info, String avatar) {
+    public Provider_old(String id, String name, String info, String avatar) {
         this.id = id;
         this.name = name;
         this.info = info;
