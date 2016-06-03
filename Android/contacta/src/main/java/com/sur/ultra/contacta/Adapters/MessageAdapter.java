@@ -22,9 +22,9 @@ public class MessageAdapter
 
     private final List<Message> messages;
     private Context ctx;
-    private MessagesFragment.OnHeadlineSelectedListener mCallback;
+    private MessagesFragment.OnMessageSelectedListener mCallback;
 
-    public MessageAdapter(List<Message> messages, Context ctx, MessagesFragment.OnHeadlineSelectedListener mCallback) {
+    public MessageAdapter(List<Message> messages, Context ctx, MessagesFragment.OnMessageSelectedListener mCallback) {
         this.messages = messages;
         this.ctx = ctx;
         this.mCallback = mCallback;
@@ -37,10 +37,10 @@ public class MessageAdapter
         public TextView author;
         private List<Message> messages = new ArrayList<Message>();
         private Context ctx;
-        private MessagesFragment.OnHeadlineSelectedListener mCallback;
+        private MessagesFragment.OnMessageSelectedListener mCallback;
 
 
-        public ViewHolder(View v, Context ctx, List<Message> messages, MessagesFragment.OnHeadlineSelectedListener mCallback) {
+        public ViewHolder(View v, Context ctx, List<Message> messages, MessagesFragment.OnMessageSelectedListener mCallback) {
             super(v);
             this.messages = messages;
             this.ctx = ctx;
@@ -55,7 +55,7 @@ public class MessageAdapter
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            mCallback.onArticleSelected(3);
+            mCallback.onMessageSelected(3);
         }
     }
 

@@ -1,6 +1,5 @@
 package com.sur.ultra.contacta.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,11 +18,11 @@ import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
  */
 public class MessagesFragment extends android.support.v4.app.Fragment {
 
-    OnHeadlineSelectedListener mCallback;
+    OnMessageSelectedListener mCallback;
 
     // Container Activity must implement this interface
-    public interface OnHeadlineSelectedListener {
-        public void onArticleSelected(int position);
+    public interface OnMessageSelectedListener {
+        void onMessageSelected(int position);
     }
 
     private LinearLayoutManager linearLayout;
@@ -38,10 +37,10 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            mCallback = (OnHeadlineSelectedListener) context;
+            mCallback = (OnMessageSelectedListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
-                    + " must implement OnHeadlineSelectedListener");
+                    + " must implement OnMessageSelectedListener");
         }
     }
 
