@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

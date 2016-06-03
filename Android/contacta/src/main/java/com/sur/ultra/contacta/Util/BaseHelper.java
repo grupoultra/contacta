@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.Util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

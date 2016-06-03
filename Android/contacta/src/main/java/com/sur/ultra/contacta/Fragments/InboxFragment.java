@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.Fragments;
 
 
 import android.graphics.Color;
@@ -10,6 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.TabsAdapter;
 
 
 /**
@@ -50,8 +53,8 @@ public class InboxFragment extends Fragment {
 
     private void poblarViewPager(ViewPager viewPager) {
         TabsAdapter adapter = new TabsAdapter(getFragmentManager());
-        adapter.addFragment(new FragmentoNoticias(), getString(R.string.title_activity_news));
-        adapter.addFragment(new FragmentoMensajes(), getString(R.string.title_activity_messages));
+        adapter.addFragment(new NewsFragment(), getString(R.string.title_activity_news));
+        adapter.addFragment(new MessagesFragment(), getString(R.string.title_activity_messages));
         viewPager.setAdapter(adapter);
     }
 

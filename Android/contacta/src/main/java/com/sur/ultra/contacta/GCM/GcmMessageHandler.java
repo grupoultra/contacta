@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.GCM;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,6 +13,9 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
+import com.sur.ultra.contacta.InboxActivity;
+import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.BaseHelper;
 
 /**
  * Created by alexis on 5/9/16.

@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.GCM;
 
 import android.content.Intent;
 import android.util.Log;
