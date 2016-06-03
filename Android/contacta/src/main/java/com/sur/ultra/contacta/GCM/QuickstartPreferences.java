@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.GCM;
 
 public class QuickstartPreferences {
 

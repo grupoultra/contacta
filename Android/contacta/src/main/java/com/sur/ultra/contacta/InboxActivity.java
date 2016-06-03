@@ -15,7 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.sur.ultra.contacta.Fragments.InboxFragment;
+import com.sur.ultra.contacta.Fragments.InitializationFragment;
+import com.sur.ultra.contacta.Fragments.ProvidersFragment;
+import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
 public class InboxActivity extends AppCompatActivity {
 

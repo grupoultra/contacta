@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sur.ultra.contacta.Models.Provider;
+import com.sur.ultra.contacta.R;
 
 /**
  * Created by alexis on 6/2/16.

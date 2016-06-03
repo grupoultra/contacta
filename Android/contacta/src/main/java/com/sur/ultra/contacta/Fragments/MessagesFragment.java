@@ -1,4 +1,4 @@
-package com.sur.ultra.contacta;
+package com.sur.ultra.contacta.Fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,17 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sur.ultra.contacta.Adapters.MessageAdapter;
 import com.sur.ultra.contacta.Models.Message;
+import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
 
 /**
  * Created by alexis on 6/2/16.
  */
-public class FragmentoMensajes extends android.support.v4.app.Fragment {
+public class MessagesFragment extends android.support.v4.app.Fragment {
 
     /**/
 
 //    private static final String INDICE_SECCION
-//            = "com.sur.ultra.contacta.InboxFragment.extra.INDICE_SECCION";
+//            = "com.sur.ultra.contacta.Fragments.InboxFragment.extra.INDICE_SECCION";
 //
 //    private RecyclerView reciclador;
 //    private GridLayoutManager layoutManager;
@@ -60,7 +63,7 @@ public class FragmentoMensajes extends android.support.v4.app.Fragment {
 
     private LinearLayoutManager linearLayout;
 
-    public FragmentoMensajes() {
+    public MessagesFragment() {
 
     }
 
