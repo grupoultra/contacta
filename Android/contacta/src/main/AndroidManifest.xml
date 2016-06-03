@@ -50,82 +50,14 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity
-            android:name=".NewsActivity"
-            android:label="@string/title_activity_news"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".InboxActivity"
+            android:label="@string/title_activity_inbox">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MessagesActivity"
-            android:label="@string/title_activity_messages"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ProvidersActivity"
-            android:label="Proveedores"
-            android:parentActivityName=".NewsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".NewsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".NewsActivity" />
-        </activity>
-        <activity
-            android:name=".NewsDetailActivity"
-            android:label="@string/title_activity_news_detail"
-            android:parentActivityName=".NewsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.NewsActivity" />
-        </activity>
-        <activity
-            android:name=".ChatActivity"
-            android:label="Contacta"
-            android:parentActivityName=".MessagesActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.MessagesActivity" />
-        </activity>
-        <activity
-            android:name=".ProviderDetailsActivity"
-            android:label="@string/title_activity_provider_details"
-            android:parentActivityName=".ProvidersActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.ProvidersActivity" />
-        </activity>
-        <activity
-            android:name=".InitializationActivity"
-            android:label="@string/title_activity_initialization"
-            android:parentActivityName=".NewsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.NewsActivity" />
-        </activity>
-        <activity
-            android:name=".NewInitializationActivity"
-            android:label="@string/title_activity_new_initialization"
-            android:parentActivityName=".InitializationActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sur.ultra.contacta.InitializationActivity" />
         </activity>
     </application>
 

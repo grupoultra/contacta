@@ -1,24 +1,11 @@
 <resources>
     <string name="app_name">Contacta</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_messages">Mensajes</string>
-    <string name="title_activity_news">Noticias</string>
+    <string name="title_activity_inbox">Contacta</string>
     <string name="title_activity_providers">Proveedores</string>
     <string name="title_activity_settings">Configuración</string>
-    <string name="title_activity_news_detail">Noticia</string>
-    <string name="title_activity_message_detail">Mensajes</string>
-    <string name="title_activity_provider_details">Proveedor</string>
-    <string name="pick_toppings">Proveedor</string>
     <string name="title_activity_initialization">Inicializacion</string>
-    <string name="title_activity_new_initialization">NewInitializationActivity</string>
-    <string name="cancelar">CANCELAR</string>
-    <string name="aceptar">ACEPTAR</string>
-    <string name="ingrese_el_codigo">Ingrese el codigo</string>
-    <string name="contacta_le_llamara_en">Contacta le llamara en:</string>
-    <string name="hemos_enviado_codigo">Hemos enviado un codigo por SMS al:</string>
-    <string name="title_activity_search_providers">Buscar proveedor</string>
+    <string name="title_activity_messages">Mensajes</string>
+    <string name="title_activity_news">Noticias</string>
+
 </resources>
