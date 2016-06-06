@@ -60,6 +60,11 @@ public class InboxActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -87,27 +92,27 @@ public class InboxActivity extends AppCompatActivity
     }
 
     private void seleccionarItem(MenuItem itemDrawer) {
-        Fragment fragmentoGenerico = null;
+        Fragment mFragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (itemDrawer.getItemId()) {
             case R.id.nav_inbox:
-                fragmentoGenerico = new InboxFragment();
+                mFragment = new InboxFragment();
                 break;
             case R.id.nav_providers:
-                fragmentoGenerico = new ProvidersFragment();
+                mFragment = new ProvidersFragment();
                 break;
             case R.id.nav_settings:
-                fragmentoGenerico = new SettingsFragment();
+                mFragment = new SettingsFragment();
                 break;
             case R.id.nav_initialization:
-                fragmentoGenerico = new InitializationFragment();
+                mFragment = new InitializationFragment();
                 break;
         }
-        if (fragmentoGenerico != null) {
+        if (mFragment != null) {
             fragmentManager
                     .beginTransaction()
-                    .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .replace(R.id.contenedor_principal, mFragment)
                     .commit();
         }
 
@@ -151,26 +156,28 @@ public class InboxActivity extends AppCompatActivity
         if (type.equals("message")){
             startActivity(new Intent(this, ChatActivity.class));
         } else{
-            Fragment fragmentoGenerico = null;
+            Fragment mFragment = null;
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentoGenerico = new NewsDetailFragment();
+            mFragment = new NewsDetailFragment();
 
             fragmentManager
                     .beginTransaction()
-                    .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .replace(R.id.contenedor_principal, mFragment)
+                    .addToBackStack( "tag" )
                     .commit();
         }
     }
 
     @Override
     public void onProviderSelected(int position) {
-        Fragment fragmentoGenerico = null;
+        Fragment mFragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentoGenerico = new ProviderDetailFragment();
+        mFragment = new ProviderDetailFragment();
 
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.contenedor_principal, fragmentoGenerico)
+                .replace(R.id.contenedor_principal, mFragment)
+                .addToBackStack( "tag" )
                 .commit();
     }
 }
