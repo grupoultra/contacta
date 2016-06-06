@@ -22,7 +22,7 @@ import com.sur.ultra.contacta.Adapters.TabsAdapter;
  */
 public class InboxFragment extends Fragment {
     private AppBarLayout appBar;
-    private TabLayout pestanas;
+    private TabLayout tabs;
     private ViewPager viewPager;
 
     public InboxFragment() {
@@ -40,11 +40,21 @@ public class InboxFragment extends Fragment {
 
             // Setear adaptador al viewpager.
             viewPager = (ViewPager) view.findViewById(R.id.pager);
-            poblarViewPager(viewPager);
-            pestanas.setupWithViewPager(viewPager);
+            populateViewPager(viewPager);
+            tabs.setupWithViewPager(viewPager);
         }
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
@@ -56,13 +66,13 @@ public class InboxFragment extends Fragment {
     private void insertarTabs(ViewGroup container) {
         View padre = (View) container.getParent();
         appBar = (AppBarLayout) padre.findViewById(R.id.appbar);
-        pestanas = new TabLayout(getActivity());
-        pestanas.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
-        appBar.addView(pestanas);
+        tabs = new TabLayout(getActivity());
+        tabs.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
+        appBar.addView(tabs);
     }
 
-    private void poblarViewPager(ViewPager viewPager) {
-        TabsAdapter adapter = new TabsAdapter(getFragmentManager());
+    private void populateViewPager(ViewPager viewPager) {
+        TabsAdapter adapter = new TabsAdapter(getChildFragmentManager());
         adapter.addFragment(MessagesFragment.newInstance(0), getString(R.string.title_activity_news));
         adapter.addFragment(MessagesFragment.newInstance(1), getString(R.string.title_activity_messages));
         viewPager.setAdapter(adapter);
@@ -71,7 +81,7 @@ public class InboxFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        appBar.removeView(pestanas);
+        appBar.removeView(tabs);
     }
 
 }
