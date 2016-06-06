@@ -2,9 +2,11 @@ package com.sur.ultra.contacta.Fragments;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.sur.ultra.contacta.ChatActivity;
 import com.sur.ultra.contacta.R;
 
 
@@ -71,7 +74,17 @@ public class ProviderDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_provider_detail, container, false);
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.toolbar_layout);
-        collapsingToolbarLayout.setTitle("Proveedor");
+        collapsingToolbarLayout.setTitle("Nombre Proveedor");
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), ChatActivity.class));
+                }
+            });
+        }
 
         return view;
     }
