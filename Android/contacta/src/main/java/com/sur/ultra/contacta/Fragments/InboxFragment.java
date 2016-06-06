@@ -8,6 +8,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -29,6 +31,8 @@ public class InboxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.fragment_view_pager, container, false);
 
         if (savedInstanceState == null) {
@@ -41,6 +45,12 @@ public class InboxFragment extends Fragment {
         }
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.inbox, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private void insertarTabs(ViewGroup container) {

@@ -117,7 +117,6 @@ public class InboxActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.messages, menu);
         return true;
     }
 

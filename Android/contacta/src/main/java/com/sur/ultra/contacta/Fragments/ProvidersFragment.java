@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,6 +54,8 @@ public class ProvidersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.fragments_recycler_view, container, false);
 
         RecyclerView reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
@@ -63,6 +67,12 @@ public class ProvidersFragment extends Fragment {
         reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.no_filter_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 }
