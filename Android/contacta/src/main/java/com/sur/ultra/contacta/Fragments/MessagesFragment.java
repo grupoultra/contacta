@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +19,28 @@ import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
  */
 public class MessagesFragment extends android.support.v4.app.Fragment {
 
+    private static final String MESSAGE_TYPE = "";
     OnMessageSelectedListener mCallback;
 
     // Container Activity must implement this interface
     public interface OnMessageSelectedListener {
-        void onMessageSelected(int position);
+        void onMessageSelected(int position, String type);
     }
 
     public MessagesFragment() {
 
     }
+
+    public static MessagesFragment newInstance(int type) {
+        MessagesFragment fragment = new MessagesFragment();
+        Bundle args = new Bundle();
+        args.putInt(MESSAGE_TYPE, type);
+
+//        args.putString(MESSAGE_TYPE, type);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -58,7 +71,14 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        MessageAdapter adaptador = new MessageAdapter(Message.MESSAGES, getActivity(), mCallback);
+        MessageAdapter adaptador;
+        int messageType = getArguments().getInt(MESSAGE_TYPE);
+
+        if(messageType == 0){
+            adaptador = new MessageAdapter(Message.NEWS, getActivity(), mCallback);
+        } else{
+            adaptador = new MessageAdapter(Message.MESSAGES, getActivity(), mCallback);
+        }
         reciclador.setAdapter(adaptador);
         reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 

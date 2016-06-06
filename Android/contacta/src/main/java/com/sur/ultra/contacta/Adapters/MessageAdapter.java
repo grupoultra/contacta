@@ -55,7 +55,7 @@ public class MessageAdapter
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            mCallback.onMessageSelected(3);
+            mCallback.onMessageSelected(messages.get(position).id, messages.get(position).type);
         }
     }
 
