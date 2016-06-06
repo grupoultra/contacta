@@ -81,7 +81,10 @@ public class InboxFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        appBar.removeView(tabs);
+
+        if(tabs != null){
+            appBar.removeView(tabs);
+        }
     }
 
 }
