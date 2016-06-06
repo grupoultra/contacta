@@ -3,6 +3,7 @@ package com.sur.ultra.contacta.Models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.sur.ultra.contacta.Models.Message;
 
 /**
  * Created by alexis on 6/2/16.
@@ -22,25 +23,14 @@ public class Message {
         this.type = type;
     }
 
-    public final static List<com.sur.ultra.contacta.Models.Message> MESSAGES = new ArrayList<com.sur.ultra.contacta.Models.Message>();
-    public final static List<com.sur.ultra.contacta.Models.Message> NEWS = new ArrayList<com.sur.ultra.contacta.Models.Message>();
+    public final static List<Message> MESSAGES = new ArrayList<Message>();
+    public final static List<Message> NEWS = new ArrayList<Message>();
 
     static {
         MESSAGES.add(new com.sur.ultra.contacta.Models.Message(1, "Message", "LaIguana.TV", new Date(), "message"));
         MESSAGES.add(new com.sur.ultra.contacta.Models.Message(2, "Message", "Banco Mercantil", new Date() , "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(3, "Message", "Banco Mercantil", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(4, "Message", "GMVV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(5, "Message", "CANTV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(6, "Message", "Banco Mercantil", new Date() , "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(7, "Message", "Movistar de Venezuela", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(8, "Message", "GMVV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(9, "Message", "GMVV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(10, "Message", "LaIguana.TV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(11, "Message", "CANTV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(12, "Message", "GMVV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(13, "Message", "Banco Mercantil", new Date() , "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(14, "Message", "LaIguana.TV", new Date(), "message"));
-    
+        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(3, "Message", "GMVV", new Date(), "message"));
+
         NEWS.add(new com.sur.ultra.contacta.Models.Message(15, "News", "LaIguana.TV", new Date(), "news"));
         NEWS.add(new com.sur.ultra.contacta.Models.Message(16, "News", "Banco Mercantil", new Date() , "news"));
         NEWS.add(new com.sur.ultra.contacta.Models.Message(17, "News", "Banco Mercantil", new Date(), "news"));
