@@ -20,7 +20,7 @@ import com.sur.ultra.contacta.R;
  * create an instance of this fragment.
  */
 public class NewsDetailFragment extends Fragment {
-    // The container Activity must implement this interface so the frag can deliver messages
+    // The container Activity must implement this interface so the frag can deliver inbox
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
