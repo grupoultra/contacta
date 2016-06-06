@@ -1,6 +1,7 @@
 package com.sur.ultra.contacta;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -146,15 +147,19 @@ public class InboxActivity extends AppCompatActivity
     }
 
     @Override
-    public void onMessageSelected(int position) {
-        Fragment fragmentoGenerico = null;
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentoGenerico = new NewsDetailFragment();
+    public void onMessageSelected(int id, String type) {
+        if (type.equals("message")){
+            startActivity(new Intent(this, ChatActivity.class));
+        } else{
+            Fragment fragmentoGenerico = null;
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentoGenerico = new NewsDetailFragment();
 
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.contenedor_principal, fragmentoGenerico)
-                .commit();
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.contenedor_principal, fragmentoGenerico)
+                    .commit();
+        }
     }
 
     @Override
