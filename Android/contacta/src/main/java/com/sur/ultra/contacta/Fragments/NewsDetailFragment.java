@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sur.ultra.contacta.R;
 
@@ -75,6 +77,39 @@ public class NewsDetailFragment extends Fragment {
 
         TextView nameView = (TextView) view.findViewById(R.id.newsBody);
         nameView.setText(R.string.news_detail_dummy_content);
+
+
+
+        Button buttonLike = (Button) view.findViewById(R.id.buttonLike);
+        buttonLike.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Toast.makeText(getActivity(), "Esta noticia habla bien del tema", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button buttonDislike = (Button) view.findViewById(R.id.buttonDislike);
+        buttonDislike.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Toast.makeText(getActivity(), "Esta noticia habla mal del tema", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button buttonInformation = (Button) view.findViewById(R.id.buttonInformation);
+        buttonInformation.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Toast.makeText(getActivity(), "Link externo", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
         return view;
     }
