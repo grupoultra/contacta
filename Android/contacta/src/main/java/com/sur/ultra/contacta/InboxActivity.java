@@ -12,7 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -46,7 +45,7 @@ public class InboxActivity extends AppCompatActivity
         if (navigationView != null) {
             prepararDrawer(navigationView);
             // Seleccionar item por defecto
-            seleccionarItem(navigationView.getMenu().getItem(0));
+            selectItem(navigationView.getMenu().getItem(0));
         }
     }
 
@@ -85,7 +84,7 @@ public class InboxActivity extends AppCompatActivity
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
-                        seleccionarItem(menuItem);
+                        selectItem(menuItem);
                         drawerLayout.closeDrawers();
                         return true;
                     }
@@ -93,7 +92,7 @@ public class InboxActivity extends AppCompatActivity
 
     }
 
-    private void seleccionarItem(MenuItem itemDrawer) {
+    private void selectItem(MenuItem itemDrawer) {
         Fragment mFragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -114,7 +113,7 @@ public class InboxActivity extends AppCompatActivity
         if (mFragment != null) {
             fragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, mFragment)
+                    .replace(R.id.main_container, mFragment, "ActualFragment")
                     .commit();
         }
 
