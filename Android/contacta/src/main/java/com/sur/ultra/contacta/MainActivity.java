@@ -24,17 +24,17 @@ import com.sur.ultra.contacta.Fragments.ProviderDetailFragment;
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
-public class InboxActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements MessagesFragment.OnMessageSelectedListener,
                    ProvidersFragment.OnProviderSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private static final String TAG = "InboxActivity";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inbox);
+        setContentView(R.layout.activity_main);
 
         agregarToolbar();
 
@@ -43,10 +43,23 @@ public class InboxActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         if (navigationView != null) {
-            prepararDrawer(navigationView);
+            prepareDrawer(navigationView);
             // Seleccionar item por defecto
             selectItem(navigationView.getMenu().getItem(0));
         }
+    }
+
+    private void prepareDrawer(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        selectItem(menuItem);
+                        drawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
     }
 
     private void agregarToolbar() {
@@ -58,14 +71,12 @@ public class InboxActivity extends AppCompatActivity
             ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
             ab.setDisplayHomeAsUpEnabled(true);
         }
-
     }
 
     @Override
     protected void onResume(){
         super.onResume();
     }
-
 
     @Override
     public void onBackPressed() {
@@ -75,21 +86,6 @@ public class InboxActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    private void prepararDrawer(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        menuItem.setChecked(true);
-                        selectItem(menuItem);
-                        drawerLayout.closeDrawers();
-                        return true;
-                    }
-                });
-
     }
 
     private void selectItem(MenuItem itemDrawer) {
@@ -121,7 +117,6 @@ public class InboxActivity extends AppCompatActivity
         setTitle(itemDrawer.getTitle());
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
@@ -135,16 +130,16 @@ public class InboxActivity extends AppCompatActivity
                 return true;
 
             case R.id.action_sort:
-                new AlertDialog.Builder(InboxActivity.this)
+                new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Ordenar")
                         .setPositiveButton("Por proveedor", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(InboxActivity.this, "Ordenado por proveedor", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Ordenado por proveedor", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("Por fecha", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(InboxActivity.this, "Ordenado por fecha", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Ordenado por fecha", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
