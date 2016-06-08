@@ -43,10 +43,24 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         if (navigationView != null) {
-            prepararDrawer(navigationView);
+            prepareDrawer(navigationView);
             // Seleccionar item por defecto
             selectItem(navigationView.getMenu().getItem(0));
         }
+    }
+
+    private void prepareDrawer(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        selectItem(menuItem);
+                        drawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+
     }
 
     private void agregarToolbar() {
@@ -66,7 +80,6 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -75,21 +88,6 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    private void prepararDrawer(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        menuItem.setChecked(true);
-                        selectItem(menuItem);
-                        drawerLayout.closeDrawers();
-                        return true;
-                    }
-                });
-
     }
 
     private void selectItem(MenuItem itemDrawer) {
@@ -120,7 +118,6 @@ public class MainActivity extends AppCompatActivity
         // Setear título actual
         setTitle(itemDrawer.getTitle());
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
