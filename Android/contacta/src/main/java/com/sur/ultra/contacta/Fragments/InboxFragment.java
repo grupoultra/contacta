@@ -36,7 +36,7 @@ public class InboxFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_view_pager, container, false);
 
         if (savedInstanceState == null) {
-            insertarTabs(container);
+            insertTabs(container);
 
             // Setear adaptador al viewpager.
             viewPager = (ViewPager) view.findViewById(R.id.pager);
@@ -63,9 +63,9 @@ public class InboxFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void insertarTabs(ViewGroup container) {
-        View padre = (View) container.getParent();
-        appBar = (AppBarLayout) padre.findViewById(R.id.appbar);
+    private void insertTabs(ViewGroup container) {
+        View parent = (View) container.getParent();
+        appBar = (AppBarLayout) parent.findViewById(R.id.appbar);
         tabs = new TabLayout(getActivity());
         tabs.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
         appBar.addView(tabs);

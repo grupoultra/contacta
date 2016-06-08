@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class InboxActivity extends AppCompatActivity
                    ProvidersFragment.OnProviderSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private static final String TAG = "InboxActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +114,7 @@ public class InboxActivity extends AppCompatActivity
         if (mFragment != null) {
             fragmentManager
                     .beginTransaction()
-                    .replace(R.id.contenedor_principal, mFragment)
+                    .replace(R.id.main_container, mFragment)
                     .commit();
         }
 
@@ -162,7 +164,7 @@ public class InboxActivity extends AppCompatActivity
 
             fragmentManager
                     .beginTransaction()
-                    .replace(R.id.contenedor_principal, mFragment)
+                    .replace(R.id.main_container, mFragment)
                     .addToBackStack( "tag" )
                     .commit();
         }
@@ -176,7 +178,7 @@ public class InboxActivity extends AppCompatActivity
 
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.contenedor_principal, mFragment)
+                .replace(R.id.main_container, mFragment)
                 .addToBackStack( "tag" )
                 .commit();
     }
