@@ -24,12 +24,12 @@ import com.sur.ultra.contacta.Fragments.ProviderDetailFragment;
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
-public class InboxActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements MessagesFragment.OnMessageSelectedListener,
                    ProvidersFragment.OnProviderSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private static final String TAG = "InboxActivity";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,16 +135,16 @@ public class InboxActivity extends AppCompatActivity
                 return true;
 
             case R.id.action_sort:
-                new AlertDialog.Builder(InboxActivity.this)
+                new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Ordenar")
                         .setPositiveButton("Por proveedor", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(InboxActivity.this, "Ordenado por proveedor", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Ordenado por proveedor", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("Por fecha", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(InboxActivity.this, "Ordenado por fecha", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Ordenado por fecha", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
