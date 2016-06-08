@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inbox);
+        setContentView(R.layout.activity_main);
 
         agregarToolbar();
 
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity
                         return true;
                     }
                 });
-
     }
 
     private void agregarToolbar() {
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity
             ab.setHomeAsUpIndicator(R.drawable.drawer_toggle);
             ab.setDisplayHomeAsUpEnabled(true);
         }
-
     }
 
     @Override

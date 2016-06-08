@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true">
 
     <!-- Contenido Principal -->
-    <include layout="@layout/content_inbox" />
+    <include layout="@layout/content_main" />
 
     <!-- Menú Deslizante -->
     <android.support.design.widget.NavigationView
