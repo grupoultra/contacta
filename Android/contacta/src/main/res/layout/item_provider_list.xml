@@ -28,15 +28,14 @@
             android:text="Provider's name"
             android:gravity="center_vertical"/>
 
-        <ImageButton
+        <Button
+            android:id="@+id/disconnectButton"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:background="?android:attr/selectableItemBackground"
-            android:src="@android:drawable/ic_menu_delete"
-            android:tint="#777"
-            android:layout_gravity="center_vertical"
-            android:layout_centerInParent="true"
+            android:text="X"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>

@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Models.Provider;
@@ -37,7 +39,7 @@ public class ProvidersAdapter
         private List<Provider> providers = new ArrayList<Provider>();
         private Context ctx;
         private ProvidersFragment.OnProviderSelectedListener mCallback;
-
+        Button disconnectButton;
 
         public ViewHolder(View v, Context ctx, List<Provider> providers, ProvidersFragment.OnProviderSelectedListener mCallback) {
             super(v);
@@ -45,6 +47,9 @@ public class ProvidersAdapter
             this.ctx = ctx;
             this.mCallback = mCallback;
 
+            disconnectButton = (Button) v.findViewById(R.id.disconnectButton);
+
+            disconnectButton.setOnClickListener(this);
             v.setOnClickListener(this);
 
             name = (TextView) v.findViewById(R.id.providers_name);
@@ -53,7 +58,12 @@ public class ProvidersAdapter
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            mCallback.onProviderSelected(3);
+
+            if (v.getId() == disconnectButton.getId()){
+                Toast.makeText(v.getContext(), "Desconectar = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            } else {
+                mCallback.onProviderSelected(3);
+            }
         }
     }
 
