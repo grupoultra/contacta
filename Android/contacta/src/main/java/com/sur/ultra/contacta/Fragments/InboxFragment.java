@@ -38,14 +38,11 @@ public class InboxFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_view_pager, container, false);
 
-        if (savedInstanceState == null) {
-            insertTabs(container);
+        insertTabs(container);
+        viewPager = (ViewPager) view.findViewById(R.id.pager);
 
-            // Setear adaptador al viewpager.
-            viewPager = (ViewPager) view.findViewById(R.id.pager);
-            populateViewPager(viewPager);
-            tabs.setupWithViewPager(viewPager);
-        }
+        populateViewPager(viewPager);
+        tabs.setupWithViewPager(viewPager);
 
         return view;
     }
@@ -75,7 +72,7 @@ public class InboxFragment extends Fragment {
     }
 
     private void populateViewPager(ViewPager viewPager) {
-        TabsAdapter adapter = new TabsAdapter(getChildFragmentManager());
+        TabsAdapter adapter = new TabsAdapter(getFragmentManager());
         adapter.addFragment(MessagesFragment.newInstance(0), getString(R.string.title_activity_news));
         adapter.addFragment(MessagesFragment.newInstance(1), getString(R.string.title_activity_messages));
         viewPager.setAdapter(adapter);
@@ -90,4 +87,8 @@ public class InboxFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }
