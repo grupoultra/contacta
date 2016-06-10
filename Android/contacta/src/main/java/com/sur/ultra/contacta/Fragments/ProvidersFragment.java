@@ -62,7 +62,7 @@ public class ProvidersFragment extends Fragment {
 
         ProvidersAdapter adaptador = new ProvidersAdapter(Provider.PROVEEDORES, getActivity(), mCallback);
         reciclador.setAdapter(adaptador);
-        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
+//        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 
         return view;
     }
