@@ -27,23 +27,23 @@ public class Message {
     public final static List<Message> NEWS = new ArrayList<Message>();
 
     static {
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(1, "Message", "LaIguana.TV", new Date(), "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(2, "Message", "Banco Mercantil", new Date() , "message"));
-        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(3, "Message", "GMVV", new Date(), "message"));
+        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(1, "Message 1", "LaIguana.TV", new Date(), "message"));
+        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(2, "Message 2", "Banco Mercantil", new Date() , "message"));
+        MESSAGES.add(new com.sur.ultra.contacta.Models.Message(3, "Message 3", "GMVV", new Date(), "message"));
 
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(15, "News", "LaIguana.TV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(16, "News", "Banco Mercantil", new Date() , "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(17, "News", "Banco Mercantil", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(18, "News", "GMVV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(19, "News", "CANTV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(20, "News", "Banco Mercantil", new Date() , "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(21, "News", "Movistar de Venezuela", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(22, "News", "GMVV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(23, "News", "GMVV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(24, "News", "LaIguana.TV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(25, "News", "CANTV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(26, "News", "GMVV", new Date(), "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(27, "News", "Banco Mercantil", new Date() , "news"));
-        NEWS.add(new com.sur.ultra.contacta.Models.Message(28, "News", "LaIguana.TV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(15, "News 1", "LaIguana.TV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(16, "News 2", "Banco Mercantil", new Date() , "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(17, "News 3", "Banco Mercantil", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(18, "News 4", "GMVV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(19, "News 5", "CANTV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(20, "News 6", "Banco Mercantil", new Date() , "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(21, "News 7", "Movistar de Venezuela", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(22, "News 8", "GMVV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(23, "News 9", "GMVV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(24, "News 10", "LaIguana.TV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(25, "News 11", "CANTV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(26, "News 12", "GMVV", new Date(), "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(27, "News 13", "Banco Mercantil", new Date() , "news"));
+        NEWS.add(new com.sur.ultra.contacta.Models.Message(28, "News 14", "LaIguana.TV", new Date(), "news"));
     }
 }
