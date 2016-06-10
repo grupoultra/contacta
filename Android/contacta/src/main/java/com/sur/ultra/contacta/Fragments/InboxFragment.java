@@ -75,7 +75,7 @@ public class InboxFragment extends Fragment {
     }
 
     private void populateViewPager(ViewPager viewPager) {
-        TabsAdapter adapter = new TabsAdapter(getFragmentManager());
+        TabsAdapter adapter = new TabsAdapter(getChildFragmentManager());
         adapter.addFragment(MessagesFragment.newInstance(0), getString(R.string.title_activity_news));
         adapter.addFragment(MessagesFragment.newInstance(1), getString(R.string.title_activity_messages));
         viewPager.setAdapter(adapter);
