@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -45,7 +46,9 @@ public class MainActivity extends AppCompatActivity
         if (navigationView != null) {
             prepareDrawer(navigationView);
             // Seleccionar item por defecto
-            selectItem(navigationView.getMenu().getItem(0));
+            if (savedInstanceState == null) {
+                selectItem(navigationView.getMenu().getItem(0));
+            }
         }
     }
 
@@ -81,10 +84,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if (drawer != null) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -113,7 +118,6 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         }
 
-        // Setear título actual
         setTitle(itemDrawer.getTitle());
     }
 
@@ -152,9 +156,8 @@ public class MainActivity extends AppCompatActivity
         if (type.equals("message")){
             startActivity(new Intent(this, ChatActivity.class));
         } else{
-            Fragment mFragment = null;
             FragmentManager fragmentManager = getSupportFragmentManager();
-            mFragment = new NewsDetailFragment();
+            Fragment mFragment = new NewsDetailFragment();
 
             fragmentManager
                     .beginTransaction()
@@ -166,14 +169,19 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onProviderSelected(int position) {
-        Fragment mFragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mFragment = new ProviderDetailFragment();
+        Fragment mFragment = new ProviderDetailFragment();
 
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.main_container, mFragment)
                 .addToBackStack( "tag" )
                 .commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
     }
 }
