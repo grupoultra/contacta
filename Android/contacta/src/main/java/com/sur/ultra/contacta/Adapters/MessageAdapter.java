@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sur.ultra.contacta.Fragments.MessagesFragment;
 import com.sur.ultra.contacta.Models.Message;
@@ -39,6 +41,7 @@ public class MessageAdapter
         private Context ctx;
         private MessagesFragment.OnMessageSelectedListener mCallback;
 
+        Button dismissButton;
 
         public ViewHolder(View v, Context ctx, List<Message> messages, MessagesFragment.OnMessageSelectedListener mCallback) {
             super(v);
@@ -46,6 +49,9 @@ public class MessageAdapter
             this.ctx = ctx;
             this.mCallback = mCallback;
 
+            dismissButton = (Button) v.findViewById(R.id.dismissButton);
+
+            dismissButton.setOnClickListener(this);
             v.setOnClickListener(this);
 
             messageSummary = (TextView) v.findViewById(R.id.text_messageSummary);
@@ -55,7 +61,12 @@ public class MessageAdapter
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            mCallback.onMessageSelected(messages.get(position).id, messages.get(position).type);
+
+            if (v.getId() == dismissButton.getId()){
+                Toast.makeText(v.getContext(), "Marcar como leida = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            } else {
+                mCallback.onMessageSelected(messages.get(position).id, messages.get(position).type);
+            }
         }
     }
 
