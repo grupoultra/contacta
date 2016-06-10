@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
                 selectItem(navigationView.getMenu().getItem(0));
             }
         }
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
     private void prepareDrawer(NavigationView navigationView) {
