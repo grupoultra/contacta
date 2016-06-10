@@ -74,11 +74,8 @@ public class NewsDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
-
         TextView nameView = (TextView) view.findViewById(R.id.newsBody);
         nameView.setText(R.string.news_detail_dummy_content);
-
-
 
         Button buttonLike = (Button) view.findViewById(R.id.buttonLike);
         buttonLike.setOnClickListener(new View.OnClickListener()
@@ -107,9 +104,6 @@ public class NewsDetailFragment extends Fragment {
                 Toast.makeText(getActivity(), "Link externo", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
         return view;
     }
