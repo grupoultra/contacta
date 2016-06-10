@@ -3,6 +3,7 @@ package com.sur.ultra.contacta.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,12 +57,14 @@ public class ProvidersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragments_recycler_view, container, false);
 
-        RecyclerView reciclador = (RecyclerView) view.findViewById(R.id.reciclador);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Proveedores");
+
+        RecyclerView recycler = (RecyclerView) view.findViewById(R.id.reciclador);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        reciclador.setLayoutManager(layoutManager);
+        recycler.setLayoutManager(layoutManager);
 
         ProvidersAdapter adaptador = new ProvidersAdapter(Provider.PROVEEDORES, getActivity(), mCallback);
-        reciclador.setAdapter(adaptador);
+        recycler.setAdapter(adaptador);
 //        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 
         return view;
