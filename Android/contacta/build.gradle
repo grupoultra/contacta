@@ -8,8 +8,8 @@ android {
         applicationId "com.sur.ultra.contacta"
         minSdkVersion 13
         targetSdkVersion 23
-        versionCode 1
-        versionName "b-2.0"
+        versionCode 0
+        versionName "b-3.0"
     }
     buildTypes {
         release {
