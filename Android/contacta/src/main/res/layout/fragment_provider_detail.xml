@@ -40,7 +40,7 @@
         tools:context="com.sur.ultra.contacta.ScrollingActivity">
 
         <TextView
-            android:id="@+id/provider_content"
+            android:id="@+id/provider_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"

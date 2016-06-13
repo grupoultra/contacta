@@ -169,9 +169,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onProviderSelected(int position) {
+    public void onProviderSelected(int id) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment mFragment = new ProviderDetailFragment();
+        Fragment mFragment = ProviderDetailFragment.newInstance(id);
 
         fragmentManager
                 .beginTransaction()

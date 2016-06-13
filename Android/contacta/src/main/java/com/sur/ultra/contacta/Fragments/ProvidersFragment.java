@@ -7,15 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.Models.Provider;
 import com.sur.ultra.contacta.R;
-import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,7 +60,7 @@ public class ProvidersFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(layoutManager);
 
-        ProvidersAdapter adaptador = new ProvidersAdapter(Provider.PROVEEDORES, getActivity(), mCallback);
+        ProvidersAdapter adaptador = new ProvidersAdapter(Provider.getPROVIDERS(), getActivity(), mCallback);
         recycler.setAdapter(adaptador);
 //        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
 

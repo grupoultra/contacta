@@ -1,10 +1,8 @@
 package com.sur.ultra.contacta.Fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,6 @@ import android.widget.Toast;
 
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
-
-import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,8 +26,7 @@ public class NewsDetailFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_ID = "param1";
     private static final String TAG = "NewsDetailFragment";
 
     // TODO: Rename and change types of parameters
@@ -54,7 +49,7 @@ public class NewsDetailFragment extends Fragment {
     public static NewsDetailFragment newInstance(int id) {
         NewsDetailFragment fragment = new NewsDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, id);
+        args.putInt(ARG_ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,7 +58,7 @@ public class NewsDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getInt(ARG_PARAM1);
+            id = getArguments().getInt(ARG_ID);
         }
     }
 
@@ -73,7 +68,6 @@ public class NewsDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
-        HashMap<Integer, Message> Mensajes = Message.NEWS;
         Message message = Message.NEWS.get(id);
 
         TextView authorView = (TextView) view.findViewById(R.id.authorView);
