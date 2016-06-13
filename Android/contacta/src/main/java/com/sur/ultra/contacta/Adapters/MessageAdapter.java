@@ -2,6 +2,7 @@ package com.sur.ultra.contacta.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MessageAdapter
         extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
+    private static final String TAG = "MessageAdapter";
     private final List<Message> messages;
     private Context ctx;
     private MessagesFragment.OnMessageSelectedListener mCallback;
@@ -85,7 +87,7 @@ public class MessageAdapter
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Message item = messages.get(i);
-        viewHolder.messageSummary.setText(item.messageSummary);
+        viewHolder.messageSummary.setText(item.title);
         viewHolder.author.setText(item.author);
     }
 

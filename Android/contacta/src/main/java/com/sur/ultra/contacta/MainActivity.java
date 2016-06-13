@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, ChatActivity.class));
         } else{
             FragmentManager fragmentManager = getSupportFragmentManager();
-            Fragment mFragment = new NewsDetailFragment();
+            Fragment mFragment = NewsDetailFragment.newInstance(id);
 
             fragmentManager
                     .beginTransaction()

@@ -11,25 +11,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="news_detail_dummy_content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed congue justo, vel
-        pulvinar nunc. Morbi ultricies porta dolor a auctor. Mauris vel lorem imperdiet, sagittis 
-        leo at, faucibus justo. Vestibulum id lacus lorem. Proin ipsum sem, dignissim vel luctus 
-        porttitor, condimentum vel purus. Integer id efficitur arcu, quis venenatis neque. Proin 
-        metus dui, mattis ac ullamcorper ac, vehicula ut metus. Aenean mattis, nunc malesuada 
-        suscipit ultrices, leo diam porta nulla, quis iaculis elit augue vel odio. Sed dapibus 
-        augue et mi vulputate, auctor malesuada dui suscipit. Integer id urna fermentum, 
-        sollicitudin orci a, eleifend est. Quisque suscipit eget velit eget hendrerit. Fusce mi
-        leo, tempus porta eleifend sed, aliquet sit amet eros. Cum sociis natoque penatibus et
-        magnis dis parturient montes, nascetur ridiculus mus. Phasellus et dolor lacus. Integer
-        hendrerit, tellus ac posuere congue, augue augue ultrices risus, quis convallis justo diam
-        et urna Maecenas congue, odio sed sodales dictum, diam risus efficitur nisl, ac venenatis
-        nisl arcu et dolor. Etiam vel tristique turpis. Pellentesque lectus felis, porttitor at
-        porttitor ut, cursus id mauris. Vivamus elit augue, porttitor vel vulputate nec, varius
-        feugiat est. Vivamus et egestas diam, vel sollicitudin lorem. Vivamus diam libero, egestas
-        et semper quis, iaculis sit amet enim. In hac habitasse platea dictumst. Proin pretium
-        lacus ac ullamcorper finibus.
-    </string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="provider_detail_dummy_content">
         Cras mollis ipsum nec leo finibus, non pulvinar nisl scelerisque. Sed mi quam, facilisis

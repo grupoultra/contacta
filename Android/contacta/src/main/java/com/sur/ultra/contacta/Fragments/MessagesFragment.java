@@ -75,9 +75,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         int messageType = getArguments().getInt(MESSAGE_TYPE);
 
         if(messageType == 0){
-            adaptador = new MessageAdapter(Message.NEWS, getActivity(), mCallback);
+            adaptador = new MessageAdapter(Message.getNEWS(), getActivity(), mCallback);
         } else{
-            adaptador = new MessageAdapter(Message.MESSAGES, getActivity(), mCallback);
+            adaptador = new MessageAdapter(Message.getMESSAGES(), getActivity(), mCallback);
         }
         reciclador.setAdapter(adaptador);
         reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
