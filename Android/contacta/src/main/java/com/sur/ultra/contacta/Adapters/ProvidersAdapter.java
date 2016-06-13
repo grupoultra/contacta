@@ -62,16 +62,14 @@ public class ProvidersAdapter
             if (v.getId() == disconnectButton.getId()){
                 Toast.makeText(v.getContext(), "Desconectar = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
             } else {
-                mCallback.onProviderSelected(3);
+                mCallback.onProviderSelected(providers.get(position).id);
             }
         }
     }
 
-
-
     @Override
     public int getItemCount() {
-        return Provider.PROVEEDORES.size();
+        return Provider.PROVIDERS.size();
     }
 
     @Override
@@ -85,8 +83,6 @@ public class ProvidersAdapter
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Provider item = providers.get(i);
 
-        viewHolder.name.setText(item.getName());
+        viewHolder.name.setText(item.name);
     }
-
-
 }
