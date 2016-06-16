@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,7 +80,7 @@ public class NewsDetailFragment extends Fragment {
         TextView bodyView = (TextView) view.findViewById(R.id.newsBody);
         bodyView.setText(message.body);
 
-        Button buttonLike = (Button) view.findViewById(R.id.buttonLike);
+        ImageButton buttonLike = (ImageButton) view.findViewById(R.id.buttonLike);
         buttonLike.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -88,7 +89,7 @@ public class NewsDetailFragment extends Fragment {
                 Toast.makeText(getActivity(), "Esta noticia habla bien del tema", Toast.LENGTH_SHORT).show();
             }
         });
-        Button buttonDislike = (Button) view.findViewById(R.id.buttonDislike);
+        ImageButton buttonDislike = (ImageButton) view.findViewById(R.id.buttonDislike);
         buttonDislike.setOnClickListener(new View.OnClickListener()
         {
             @Override
