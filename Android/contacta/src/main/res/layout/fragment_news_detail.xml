@@ -99,64 +99,56 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <TextView
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/news_cardview2"
+            card_view:cardCornerRadius="2dp"
             android:layout_below="@+id/news_cardview"
-            android:text="¿La noticia habla BIEN o MAL del tema?"
-            android:id="@+id/textView3"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/likeZone"
-            android:weightSum="2">
+            card_view:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                >
 
-                <Button
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_thumb_up"
-                    android:id="@+id/buttonLike"
-                    android:layout_gravity="center_horizontal"
-                    android:text="BIEN"
-                    android:background="?android:attr/selectableItemBackground"
-                    />
+                    android:id="@+id/linearLayout3338"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    >
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Sea usted el crítico"
+                        android:id="@+id/textView33"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <include layout="@layout/news_detail_supports" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#bbbbbb"></LinearLayout>
+
+                <include layout="@layout/news_detail_opinion" />
 
             </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_thumb_down"
-                    android:id="@+id/buttonDislike"
-                    android:layout_gravity="center_horizontal"
-                    android:text="MAL"
-                    android:background="?android:attr/selectableItemBackground"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
     </RelativeLayout>
 </ScrollView>
 
