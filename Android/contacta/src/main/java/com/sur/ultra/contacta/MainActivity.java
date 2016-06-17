@@ -17,6 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sur.ultra.contacta.Fragments.InboxFragment;
 import com.sur.ultra.contacta.Fragments.InitializationFragment;
 import com.sur.ultra.contacta.Fragments.MessagesFragment;
@@ -51,6 +54,18 @@ public class MainActivity extends AppCompatActivity
             }
         }
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+        // Create default options which will be used for every
+        //  displayImage(...) call if no options will be passed to this method
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+                .defaultDisplayImageOptions(defaultOptions)
+                .build();
+        ImageLoader.getInstance().init(config); // Do it on Application start
+
     }
 
     private void prepareDrawer(NavigationView navigationView) {
