@@ -97,7 +97,7 @@ exports.handler = function( event, context ) {
     "lentesque sapien. Ut sollicitudin neque purus, at convallis quam consequat sit amet. Vivamus" +
     "cursus nisi at luctus pellentesque.";
 
-  var response = {
+  var providers = {
     "providers": [
       { "id": 1,  "name": "Banco Mercantil", "info": "Banco Mercantil Info" + dummyInfo, "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg" },
       { "id": 2,  "name": "Cantv", "info": "Cantv Info" + dummyInfo, "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg" },
@@ -112,5 +112,12 @@ exports.handler = function( event, context ) {
     ]
   };
 
-  context.done(null, response);
+  var resource_path = event.context['resource-path'];
+
+  if(resource_path === "/providers/{id}"){
+    var id = event.params.path.id;
+    context.done(null, _.filter(providers.providers, _.matches({ 'id': parseInt(id)})))
+  } else {
+    context.done(null, providers);
+  }
 };
