@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d7516a3-8a69-4fc7-b569-598cfbb2c778" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Android/contacta/src/main/java/com/sur/ultra/contacta/Fragments/ProvidersFragment.java" afterPath="$PROJECT_DIR$/../Android/contacta/src/main/java/com/sur/ultra/contacta/Fragments/ProvidersFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -188,7 +187,7 @@
       <workItem from="1466178585808" duration="2238000" />
       <workItem from="1466188252682" duration="420000" />
       <workItem from="1466188851166" duration="62000" />
-      <workItem from="1466188925273" duration="2339000" />
+      <workItem from="1466188925273" duration="2354000" />
     </task>
     <task id="LOCAL-00001" summary="Diferenciando el verbo y los argumentos de la ruta">
       <created>1466193268725</created>
@@ -197,11 +196,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466193268726</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="M">
+      <created>1466193293109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1466193293109</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5059000" />
+    <option name="totallyTimeSpent" value="5074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -239,7 +245,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Diferenciando el verbo y los argumentos de la ruta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diferenciando el verbo y los argumentos de la ruta" />
+    <MESSAGE value="M" />
+    <option name="LAST_COMMIT_MESSAGE" value="M" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
