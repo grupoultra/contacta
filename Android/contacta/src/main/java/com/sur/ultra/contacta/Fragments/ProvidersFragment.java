@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.Models.Provider;
 import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.API_URIS;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +44,6 @@ public class ProvidersFragment extends Fragment {
     OnProviderSelectedListener mCallback;
     private ProgressDialog dialog;
     private RecyclerView lProviders;
-    private final String URL_TO_HIT = "https://033j19n028.execute-api.us-east-1.amazonaws.com/beta/providers";
 
     // Container Activity must implement this interface
     public interface OnProviderSelectedListener {
@@ -84,20 +84,11 @@ public class ProvidersFragment extends Fragment {
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         dialog.setMessage("Cargando proveedores");
-        // Create default options which will be used for every
-        //  displayImage(...) call if no options will be passed to this method
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .build();
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getContext())
-                .defaultDisplayImageOptions(defaultOptions)
-                .build();
-        ImageLoader.getInstance().init(config); // Do it on Application start
+
 
         lProviders = (RecyclerView) view.findViewById(R.id.recicler);
 
-        new JSONTask().execute(URL_TO_HIT);
+        new JSONTask().execute(API_URIS.allProviders());
         return view;
     }
 
