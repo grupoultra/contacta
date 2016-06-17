@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.Models.Provider;
 import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.API_URIS;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -97,7 +98,7 @@ public class ProvidersFragment extends Fragment {
 
         lProviders = (RecyclerView) view.findViewById(R.id.recicler);
 
-        new JSONTask().execute(URL_TO_HIT);
+        new JSONTask().execute(API_URIS.allProviders());
         return view;
     }
 
