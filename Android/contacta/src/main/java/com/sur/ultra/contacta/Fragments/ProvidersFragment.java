@@ -14,9 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sur.ultra.contacta.Adapters.ProvidersAdapter;
 import com.sur.ultra.contacta.Models.Provider;
 import com.sur.ultra.contacta.R;
@@ -88,11 +85,11 @@ public class ProvidersFragment extends Fragment {
 
         lProviders = (RecyclerView) view.findViewById(R.id.recicler);
 
-        new JSONTask().execute(API_URIS.allProviders());
+        new GetAllProviders().execute(API_URIS.allProviders());
         return view;
     }
 
-    public class JSONTask extends AsyncTask<String,String, List<Provider>> {
+    public class GetAllProviders extends AsyncTask<String,String, List<Provider>> {
 
         @Override
         protected void onPreExecute() {
