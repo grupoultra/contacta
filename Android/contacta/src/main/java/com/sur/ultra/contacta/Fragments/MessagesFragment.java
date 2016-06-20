@@ -1,17 +1,36 @@
 package com.sur.ultra.contacta.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.sur.ultra.contacta.Adapters.MessageAdapter;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.API_URIS;
 import com.sur.ultra.contacta.Util.DecoracionLineaDivisoria;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alexis on 6/2/16.
@@ -20,6 +39,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
     private static final String MESSAGE_TYPE = "";
     OnMessageSelectedListener mCallback;
+    private ProgressDialog dialog;
+    private RecyclerView lMessages;
+
 
     // Container Activity must implement this interface
     public interface OnMessageSelectedListener {
@@ -66,17 +88,108 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
         reciclador.setLayoutManager(linearLayout);
 
-        MessageAdapter adaptador;
-        int messageType = getArguments().getInt(MESSAGE_TYPE);
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Cargando noticias");
 
-        if(messageType == 0){
-            adaptador = new MessageAdapter(Message.getNEWS(), getActivity(), mCallback);
-        } else{
-            adaptador = new MessageAdapter(Message.getMESSAGES(), getActivity(), mCallback);
-        }
-        reciclador.setAdapter(adaptador);
-        reciclador.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
+        lMessages = (RecyclerView) view.findViewById(R.id.recicler);
+
+        new GetAllMessages().execute(API_URIS.allNews());
 
         return view;
+    }
+
+    public class GetAllMessages extends AsyncTask<String,String, List<Message>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
+        protected List<Message> doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line ="";
+                while ((line = reader.readLine()) != null){
+                    buffer.append(line);
+                }
+
+                String finalJson = buffer.toString();
+
+                JSONObject parentObject = new JSONObject(finalJson);
+                JSONArray parentArray = parentObject.getJSONArray("news");
+
+                List<Message> movieModelList = new ArrayList<>();
+
+                Gson gson = new Gson();
+                for(int i=0; i<parentArray.length(); i++) {
+                    JSONObject finalObject = parentArray.getJSONObject(i);
+                    /**
+                     * below single line of code from Gson saves you from writing the json parsing yourself which is commented below
+                     */
+                    Message movieModel = gson.fromJson(finalObject.toString(), Message.class);
+
+                    movieModelList.add(movieModel);
+                }
+                return movieModelList;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if(connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if(reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return  null;
+        }
+
+        @Override
+        protected void onPostExecute(final List<Message> result) {
+            super.onPostExecute(result);
+            dialog.dismiss();
+            if(result != null) {
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                lMessages.setLayoutManager(layoutManager);
+
+                MessageAdapter adaptador;
+
+                int messageType = getArguments().getInt(MESSAGE_TYPE);
+
+                if(messageType == 0){
+                    adaptador = new MessageAdapter(result, getActivity(), mCallback);
+                } else{
+                    adaptador = new MessageAdapter(result, getActivity(), mCallback);
+                }
+
+
+                lMessages.setAdapter(adaptador);
+                lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
+
+            } else {
+                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
