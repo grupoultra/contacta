@@ -72,7 +72,7 @@ public class NewsDetailFragment extends Fragment {
         Message message = Message.NEWS.get(id);
 
         TextView authorView = (TextView) view.findViewById(R.id.authorView);
-        authorView.setText(message.author);
+        authorView.setText(message.name);
 
         TextView titleView = (TextView) view.findViewById(R.id.newsTitle);
         titleView.setText(message.title);
