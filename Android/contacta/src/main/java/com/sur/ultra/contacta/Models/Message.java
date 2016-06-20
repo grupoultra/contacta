@@ -15,16 +15,40 @@ public class Message {
     public String title;
     public String body;
     public String name;
-    public Date date;
+    public String date;
     public String avatar;
 
-    public Message(int id, String title, String body, String author, Date date, String type) {
+    public Message(int id, String title, String body, String author, String date, String type) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.name = author;
         this.date = date;
         this.avatar = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public final static HashMap<Integer, Message> MESSAGES = new HashMap<Integer, Message>();
@@ -58,23 +82,23 @@ public class Message {
             "lacus ac ullamcorper finibus.";
 
     static {
-        MESSAGES.put(1, new Message(1, "Message 1 " , "Message 1 " + dummyBody, "LaIguana.TV", new Date(), "message"));
-        MESSAGES.put(2, new Message(2, "Message 2 " , "Message 2 " + dummyBody, "Banco Mercantil", new Date() , "message"));
-        MESSAGES.put(3, new Message(3, "Message 3 " , "Message 3 " + dummyBody, "GMVV", new Date(), "message"));
+        MESSAGES.put(1, new Message(1, "Message 1 " , "Message 1 " + dummyBody, "LaIguana.TV", new Date().toString().toString(), "message"));
+        MESSAGES.put(2, new Message(2, "Message 2 " , "Message 2 " + dummyBody, "Banco Mercantil", new Date().toString() , "message"));
+        MESSAGES.put(3, new Message(3, "Message 3 " , "Message 3 " + dummyBody, "GMVV", new Date().toString(), "message"));
 
-        NEWS.put(4, new Message(4, "News 1 " , "News 1 " + dummyBody, "LaIguana.TV", new Date(), "news"));
-        NEWS.put(5, new Message(5, "News 2 " , "News 2 " + dummyBody, "Banco Mercantil", new Date() , "news"));
-        NEWS.put(6, new Message(6, "News 3 " , "News 3 " + dummyBody, "Banco Mercantil", new Date(), "news"));
-        NEWS.put(7, new Message(7, "News 4 " , "News 4 " + dummyBody, "GMVV", new Date(), "news"));
-        NEWS.put(8, new Message(8, "News 5 " , "News 5 " + dummyBody, "CANTV", new Date(), "news"));
-        NEWS.put(9, new Message(9, "News 6 " , "News 6 " + dummyBody, "Banco Mercantil", new Date() , "news"));
-        NEWS.put(10, new Message(10, "News 7 " , "News 7 " + dummyBody, "Movistar de Venezuela", new Date(), "news"));
-        NEWS.put(11, new Message(11, "News 8 " , "News 8 " + dummyBody, "GMVV", new Date(), "news"));
-        NEWS.put(12, new Message(12, "News 9 " , "News 9 " + dummyBody, "GMVV", new Date(), "news"));
-        NEWS.put(13, new Message(13, "News 10 " , "News 10 " + dummyBody, "LaIguana.TV", new Date(), "news"));
-        NEWS.put(14, new Message(14, "News 11 " , "News 11 " + dummyBody, "CANTV", new Date(), "news"));
-        NEWS.put(15, new Message(15, "News 12 " , "News 12 " + dummyBody, "GMVV", new Date(), "news"));
-        NEWS.put(16, new Message(16, "News 13 " , "News 13 " + dummyBody, "Banco Mercantil", new Date() , "news"));
-        NEWS.put(17, new Message(17, "News 14 " , "News 14 " + dummyBody, "LaIguana.TV", new Date(), "news"));
+        NEWS.put(1, new Message(4, "News 1 " , "News 1 " + dummyBody, "LaIguana.TV", new Date().toString(), "news"));
+        NEWS.put(2, new Message(5, "News 2 " , "News 2 " + dummyBody, "Banco Mercantil", new Date().toString() , "news"));
+        NEWS.put(3, new Message(6, "News 3 " , "News 3 " + dummyBody, "Banco Mercantil", new Date().toString(), "news"));
+        NEWS.put(4, new Message(7, "News 4 " , "News 4 " + dummyBody, "GMVV", new Date().toString(), "news"));
+        NEWS.put(5, new Message(8, "News 5 " , "News 5 " + dummyBody, "CANTV", new Date().toString(), "news"));
+        NEWS.put(6, new Message(9, "News 6 " , "News 6 " + dummyBody, "Banco Mercantil", new Date().toString() , "news"));
+        NEWS.put(7, new Message(10, "News 7 " , "News 7 " + dummyBody, "Movistar de Venezuela", new Date().toString(), "news"));
+        NEWS.put(8, new Message(11, "News 8 " , "News 8 " + dummyBody, "GMVV", new Date().toString(), "news"));
+        NEWS.put(9, new Message(12, "News 9 " , "News 9 " + dummyBody, "GMVV", new Date().toString(), "news"));
+        NEWS.put(10, new Message(13, "News 10 " , "News 10 " + dummyBody, "LaIguana.TV", new Date().toString(), "news"));
+        NEWS.put(11, new Message(14, "News 11 " , "News 11 " + dummyBody, "CANTV", new Date().toString(), "news"));
+        NEWS.put(12, new Message(15, "News 12 " , "News 12 " + dummyBody, "GMVV", new Date().toString(), "news"));
+        NEWS.put(13, new Message(16, "News 13 " , "News 13 " + dummyBody, "Banco Mercantil", new Date().toString() , "news"));
+        NEWS.put(14, new Message(17, "News 14 " , "News 14 " + dummyBody, "LaIguana.TV", new Date().toString(), "news"));
     }
 }
