@@ -1,18 +1,43 @@
 package com.sur.ultra.contacta.Fragments;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
+import com.sur.ultra.contacta.Util.API_URIS;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,8 +52,14 @@ public class NewsDetailFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_ID = "param1";
+    private static final String ID = "param1";
     private static final String TAG = "NewsDetailFragment";
+    private ProgressDialog dialog;
+    public TextView authorView ;
+    public TextView titleView ;
+    public TextView bodyView ;
+    public ProgressBar progressBar;
+    public ImageView avatar;
 
     // TODO: Rename and change types of parameters
     private int id;
@@ -50,7 +81,7 @@ public class NewsDetailFragment extends Fragment {
     public static NewsDetailFragment newInstance(int id) {
         NewsDetailFragment fragment = new NewsDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_ID, id);
+        args.putInt(ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,7 +90,7 @@ public class NewsDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getInt(ARG_ID);
+            id = getArguments().getInt(ID);
         }
     }
 
@@ -69,16 +100,19 @@ public class NewsDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
 
-        Message message = Message.NEWS.get(id);
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Cargando proveedor");
 
-        TextView authorView = (TextView) view.findViewById(R.id.authorView);
-        authorView.setText(message.name);
+        new JSONTask().execute(API_URIS.oneNews(getArguments().getInt(ID)));
 
-        TextView titleView = (TextView) view.findViewById(R.id.newsTitle);
-        titleView.setText(message.title);
+        authorView = (TextView) view.findViewById(R.id.authorView);
+        titleView = (TextView) view.findViewById(R.id.newsTitle);
+        bodyView = (TextView) view.findViewById(R.id.newsBody);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        avatar = (ImageView) view.findViewById(R.id.avatar);
 
-        TextView bodyView = (TextView) view.findViewById(R.id.newsBody);
-        bodyView.setText(message.body);
 
         ImageButton buttonLike = (ImageButton) view.findViewById(R.id.buttonLike);
         buttonLike.setOnClickListener(new View.OnClickListener()
@@ -137,5 +171,106 @@ public class NewsDetailFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public class JSONTask extends AsyncTask<String,String, Message> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
+
+        @Override
+        protected Message doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line ="";
+                while ((line = reader.readLine()) != null){
+                    buffer.append(line);
+                }
+
+                String finalJson = buffer.toString();
+
+                JSONObject parentObject = new JSONObject(finalJson);
+                JSONArray parentArray = parentObject.getJSONArray("news");
+
+                List<Message> movieModelList = new ArrayList<>();
+
+                Gson gson = new Gson();
+                JSONObject finalObject = parentArray.getJSONObject(0);
+                Message movieModel = gson.fromJson(finalObject.toString(), Message.class);
+
+                movieModelList.add(movieModel);
+                return movieModel;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if(connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if(reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return  null;
+        }
+
+        @Override
+        protected void onPostExecute(final Message result) {
+            super.onPostExecute(result);
+            dialog.dismiss();
+            if(result != null) {
+                authorView.setText(result.name);
+                titleView.setText(result.title);
+                bodyView.setText(result.body);
+
+                ImageLoadingListener imageLoadingListener = new ImageLoadingListener() {
+                    @Override
+                    public void onLoadingStarted(String imageUri, View view) {
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onLoadingCancelled(String imageUri, View view) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                };
+
+
+                // Then later, when you want to display image
+                ImageLoader.getInstance().displayImage(result.getAvatar(), avatar, imageLoadingListener);
+
+            } else {
+                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
