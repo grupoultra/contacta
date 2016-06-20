@@ -95,7 +95,13 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
         lMessages = (RecyclerView) view.findViewById(R.id.recicler);
 
-        new GetAllMessages().execute(API_URIS.allNews());
+        int messageType = getArguments().getInt(MESSAGE_TYPE);
+
+        if(messageType == 0){
+            new GetAllMessages().execute(API_URIS.allNews());
+        } else{
+            new GetAllMessages().execute(API_URIS.allMessages());
+        }
 
         return view;
     }
@@ -128,7 +134,14 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
                 String finalJson = buffer.toString();
 
                 JSONObject parentObject = new JSONObject(finalJson);
-                JSONArray parentArray = parentObject.getJSONArray("news");
+                JSONArray parentArray;
+                int messageType = getArguments().getInt(MESSAGE_TYPE);
+
+                if(messageType == 0) {
+                    parentArray = parentObject.getJSONArray("news");
+                } else{
+                    parentArray = parentObject.getJSONArray("messages");
+                }
 
                 List<Message> movieModelList = new ArrayList<>();
 
@@ -175,14 +188,7 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
                 MessageAdapter adaptador;
 
-                int messageType = getArguments().getInt(MESSAGE_TYPE);
-
-                if(messageType == 0){
-                    adaptador = new MessageAdapter(result, getActivity(), mCallback);
-                } else{
-                    adaptador = new MessageAdapter(result, getActivity(), mCallback);
-                }
-
+                adaptador = new MessageAdapter(result, getActivity(), mCallback);
 
                 lMessages.setAdapter(adaptador);
                 lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));

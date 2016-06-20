@@ -77,7 +77,8 @@ public class MessageAdapter
             if (v.getId() == dismissButton.getId()){
                 Toast.makeText(v.getContext(), "Marcar como leida = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
             } else {
-                mCallback.onMessageSelected(messages.get(position).id, "news");
+                Message messageClicked = messages.get(position);
+                mCallback.onMessageSelected(messageClicked.id, messageClicked.type );
             }
         }
     }
@@ -122,7 +123,6 @@ public class MessageAdapter
                 viewHolder.progressBar.setVisibility(View.GONE);
             }
         };
-
 
         // Then later, when you want to display image
         ImageLoader.getInstance().displayImage(messages.get(position).getAvatar(), viewHolder.avatar, imageLoadingListener);

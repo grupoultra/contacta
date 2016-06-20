@@ -60,7 +60,6 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_toRightOf="@+id/avatar"
                         android:layout_toEndOf="@+id/avatar"
-                        android:text="Nombre Proveedor"
                         android:layout_centerInParent="true"
                         />
                 </RelativeLayout>
@@ -82,14 +81,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Esta es una noticia"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
                         android:id="@+id/newsBody" />
 
                     <Button
