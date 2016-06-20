@@ -34,15 +34,16 @@ exports.handler = function( event, context ) {
     "lentesque sapien. Ut sollicitudin neque purus, at convallis quam consequat sit amet. Vivamus" +
     "cursus nisi at luctus pellentesque.";
 
-  var news = {
-    "news": [
+  var messages = {
+    "messages": [
       {
         "id": 1,
         "title": "News 1",
         "body": "News 1 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "LaIguana",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
+        "type": "message"
 
       },
       {
@@ -51,7 +52,8 @@ exports.handler = function( event, context ) {
         "body": "News 2 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Banco Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "message"
 
       },
       {
@@ -60,7 +62,8 @@ exports.handler = function( event, context ) {
         "body": "News 3 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "GMVV",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
+        "type": "message"
 
       },
       {
@@ -69,7 +72,53 @@ exports.handler = function( event, context ) {
         "body": "News 4 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
+        "type": "message"
+
+      }
+    ]
+  };
+
+  var news = {
+    "news": [
+      {
+        "id": 1,
+        "title": "News 1",
+        "body": "News 1 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "LaIguana",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
+        "type": "news"
+
+      },
+      {
+        "id": 2,
+        "title": "News 2",
+        "body": "News 2 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Banco Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
+
+      },
+      {
+        "id": 3,
+        "title": "News 3",
+        "body": "News 3 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "GMVV",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
+        "type": "news"
+
+      },
+      {
+        "id": 4,
+        "title": "News 4",
+        "body": "News 4 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Cantv",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
+        "type": "news"
 
       },
       {
@@ -78,7 +127,8 @@ exports.handler = function( event, context ) {
         "body": "News 5 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Banco Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       },
       {
@@ -87,7 +137,8 @@ exports.handler = function( event, context ) {
         "body": "News 6 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Movistar de Venezuela",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Movistar.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Movistar.jpg",
+        "type": "news"
 
       },
       {
@@ -96,7 +147,8 @@ exports.handler = function( event, context ) {
         "body": "News 7 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "GMVV",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
+        "type": "news"
 
       },
       {
@@ -105,7 +157,8 @@ exports.handler = function( event, context ) {
         "body": "News 8 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "LaIguana",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
+        "type": "news"
 
       },
       {
@@ -114,7 +167,8 @@ exports.handler = function( event, context ) {
         "body": "News 9 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
+        "type": "news"
 
       },
       {
@@ -123,7 +177,8 @@ exports.handler = function( event, context ) {
         "body": "News 10 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       },
       {
@@ -132,7 +187,8 @@ exports.handler = function( event, context ) {
         "body": "News 11 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       },
       {
@@ -141,7 +197,8 @@ exports.handler = function( event, context ) {
         "body": "News 12 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       },
       {
@@ -150,7 +207,8 @@ exports.handler = function( event, context ) {
         "body": "News 13 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       },
       {
@@ -159,7 +217,8 @@ exports.handler = function( event, context ) {
         "body": "News 14 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
+        "type": "news"
 
       }
     ]
@@ -248,6 +307,14 @@ exports.handler = function( event, context ) {
     case "/providers":
       console.log(providers);
       context.done(null, providers);
+      break;
+    case "/messages/{id}":
+      var id = event.params.path.id;
+      context.done(null, { "message": _.filter(providers.providers, _.matches({ 'id': parseInt(id)}))})
+      break;
+    case "/messages":
+      console.log(messages);
+      context.done(null, messages);
       break;
     default:
           context.done(null, event);
