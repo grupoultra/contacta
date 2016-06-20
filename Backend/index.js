@@ -69,7 +69,7 @@ exports.handler = function( event, context ) {
         "body": "News 4 \n\n" + dummyInfo,
         "date": new Date(),
         "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/Cantv.jpg"
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg"
 
       },
       {
@@ -234,6 +234,7 @@ exports.handler = function( event, context ) {
 
   switch (resource_path){
     case "/news":
+      console.log(news);
       context.done(null, news);
       break;
     case "/news/{id}":
