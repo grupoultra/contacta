@@ -34,6 +34,137 @@ exports.handler = function( event, context ) {
     "lentesque sapien. Ut sollicitudin neque purus, at convallis quam consequat sit amet. Vivamus" +
     "cursus nisi at luctus pellentesque.";
 
+  var news = {
+    "news": [
+      {
+        "id": 1,
+        "title": "News 1",
+        "body": "News 1 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "LaIguana",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg"
+
+      },
+      {
+        "id": 2,
+        "title": "News 2",
+        "body": "News 2 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Banco Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 3,
+        "title": "News 3",
+        "body": "News 3 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "GMVV",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg"
+
+      },
+      {
+        "id": 4,
+        "title": "News 4",
+        "body": "News 4 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Cantv",
+        "avatar": "https://s3.amazonaws.com/contacta/Cantv.jpg"
+
+      },
+      {
+        "id": 5,
+        "title": "News 5",
+        "body": "News 5 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Banco Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 6,
+        "title": "News 6",
+        "body": "News 6 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Movistar de Venezuela",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Movistar.jpg"
+
+      },
+      {
+        "id": 7,
+        "title": "News 7",
+        "body": "News 7 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "GMVV",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg"
+
+      },
+      {
+        "id": 8,
+        "title": "News 8",
+        "body": "News 8 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "LaIguana",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg"
+
+      },
+      {
+        "id": 9,
+        "title": "News 9",
+        "body": "News 9 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Cantv",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg"
+
+      },
+      {
+        "id": 10,
+        "title": "News 10",
+        "body": "News 10 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 11,
+        "title": "News 11",
+        "body": "News 11 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 12,
+        "title": "News 12",
+        "body": "News 12 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 13,
+        "title": "News 13",
+        "body": "News 13 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      },
+      {
+        "id": 14,
+        "title": "News 14",
+        "body": "News 14 \n\n" + dummyInfo,
+        "date": new Date(),
+        "name": "Mercantil",
+        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
+
+      }
+    ]
+  };
+
   var providers = {
     "providers": [
       {
@@ -101,10 +232,24 @@ exports.handler = function( event, context ) {
 
   var resource_path = event.context['resource-path'];
 
-  if(resource_path === "/providers/{id}"){
-    var id = event.params.path.id;
-    context.done(null, { "provider": _.filter(providers.providers, _.matches({ 'id': parseInt(id)}))})
-  } else {
-    context.done(null, providers);
+  switch (resource_path){
+    case "/news":
+      context.done(null, news);
+      break;
+    case "/news/{id}":
+      var id = event.params.path.id;
+      context.done(null, { "news": _.filter(news.news, _.matches({ 'id': parseInt(id)}))});
+      break;
+    case "/providers/{id}":
+      var id = event.params.path.id;
+      context.done(null, { "provider": _.filter(providers.providers, _.matches({ 'id': parseInt(id)}))})
+      break;
+    case "/providers":
+      console.log(providers);
+      context.done(null, providers);
+      break;
+    default:
+          context.done(null, event);
+          break;
   }
 };
