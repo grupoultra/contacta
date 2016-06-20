@@ -35,11 +35,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
         Bundle args = new Bundle();
         args.putInt(MESSAGE_TYPE, type);
 
-//        args.putString(MESSAGE_TYPE, type);
         fragment.setArguments(args);
         return fragment;
     }
-
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -53,8 +51,6 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
                     + " must implement OnMessageSelectedListener");
         }
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +79,4 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
         return view;
     }
-
-
 }

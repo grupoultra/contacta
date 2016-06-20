@@ -67,7 +67,7 @@ public class MessageAdapter
             if (v.getId() == dismissButton.getId()){
                 Toast.makeText(v.getContext(), "Marcar como leida = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
             } else {
-                mCallback.onMessageSelected(messages.get(position).id, messages.get(position).type);
+                mCallback.onMessageSelected(messages.get(position).id, "news");
             }
         }
     }
@@ -88,7 +88,7 @@ public class MessageAdapter
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Message item = messages.get(i);
         viewHolder.messageSummary.setText(item.title);
-        viewHolder.author.setText(item.author);
+        viewHolder.author.setText(item.name);
     }
 
 }

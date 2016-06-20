@@ -14,17 +14,17 @@ public class Message {
     public int id;
     public String title;
     public String body;
-    public String author;
+    public String name;
     public Date date;
-    public String type;
+    public String avatar;
 
     public Message(int id, String title, String body, String author, Date date, String type) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.author = author;
+        this.name = author;
         this.date = date;
-        this.type = type;
+        this.avatar = type;
     }
 
     public final static HashMap<Integer, Message> MESSAGES = new HashMap<Integer, Message>();
