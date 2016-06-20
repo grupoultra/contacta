@@ -18,4 +18,7 @@ public class API_URIS {
     public static String oneNews(int id){
         return BASE_API_URI + "news/" + id;
     }
+    public static String allMessages(){
+        return BASE_API_URI + "messages";
+    }
 }
