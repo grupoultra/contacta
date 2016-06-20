@@ -12,4 +12,10 @@ public class API_URIS {
     public static String oneProvider(int id){
         return BASE_API_URI + "providers/" + id;
     }
+    public static String allNews(){
+        return BASE_API_URI + "news";
+    }
+    public static String oneNews(int id){
+        return BASE_API_URI + "news/" + id;
+    }
 }
