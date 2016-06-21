@@ -37,7 +37,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/frown_emoticon"
                 android:background="?android:attr/selectableItemBackground"
-                android:id="@+id/imageButton" />
+                android:id="@+id/buttonNotSupport" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -50,7 +50,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/happy_emoticon"
                 android:background="?android:attr/selectableItemBackground"
-                android:id="@+id/imageButton" />
+                android:id="@+id/buttonSupport" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -63,7 +63,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/meh_emoticon"
                 android:background="?android:attr/selectableItemBackground"
-                android:id="@+id/imageButton" />
+                android:id="@+id/buttonNeutralSupport" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
