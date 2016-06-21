@@ -1,14 +1,21 @@
 package com.sur.ultra.contacta.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.sur.ultra.contacta.Fragments.MessagesFragment;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
@@ -22,6 +29,7 @@ import java.util.List;
 public class MessageAdapter
         extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
+    private static final String TAG = "MessageAdapter";
     private final List<Message> messages;
     private Context ctx;
     private MessagesFragment.OnMessageSelectedListener mCallback;
@@ -36,10 +44,12 @@ public class MessageAdapter
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // Campos respectivos de un item
         public TextView messageSummary;
+        public ImageView avatar;
         public TextView author;
         private List<Message> messages = new ArrayList<Message>();
         private Context ctx;
         private MessagesFragment.OnMessageSelectedListener mCallback;
+        public ProgressBar progressBar;
 
         Button dismissButton;
 
@@ -56,6 +66,8 @@ public class MessageAdapter
 
             messageSummary = (TextView) v.findViewById(R.id.text_messageSummary);
             author = (TextView) v.findViewById(R.id.text_author);
+            avatar = (ImageView) v.findViewById(R.id.avatar);
+            progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
         }
 
         @Override
@@ -65,7 +77,8 @@ public class MessageAdapter
             if (v.getId() == dismissButton.getId()){
                 Toast.makeText(v.getContext(), "Marcar como leida = " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
             } else {
-                mCallback.onMessageSelected(messages.get(position).id, messages.get(position).type);
+                Message messageClicked = messages.get(position);
+                mCallback.onMessageSelected(messageClicked.id, messageClicked.type );
             }
         }
     }
@@ -83,10 +96,36 @@ public class MessageAdapter
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Message item = messages.get(i);
-        viewHolder.messageSummary.setText(item.messageSummary);
-        viewHolder.author.setText(item.author);
+    public void onBindViewHolder(final ViewHolder viewHolder, int position) {
+        Message item = messages.get(position);
+        viewHolder.messageSummary.setText(item.title);
+        viewHolder.author.setText(item.name);
+
+
+        ImageLoadingListener imageLoadingListener = new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+                viewHolder.progressBar.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                viewHolder.progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                viewHolder.progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onLoadingCancelled(String imageUri, View view) {
+                viewHolder.progressBar.setVisibility(View.GONE);
+            }
+        };
+
+        // Then later, when you want to display image
+        ImageLoader.getInstance().displayImage(messages.get(position).getAvatar(), viewHolder.avatar, imageLoadingListener);
     }
 
 }

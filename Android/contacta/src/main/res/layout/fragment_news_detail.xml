@@ -21,18 +21,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/news_cardview"
             card_view:cardCornerRadius="2dp"
-            card_view:cardUseCompatPadding="true">
-
-
+            card_view:cardUseCompatPadding="true"
+            >
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:weightSum="5"
                 android:id="@+id/linearLayout33"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
+
                 android:layout_marginBottom="15dp"
                 >
                 <RelativeLayout
@@ -40,28 +37,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/linearLayout"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#ececec"
                     >
 
                     <ImageView
                         android:id="@+id/avatar"
+                        android:layout_width="60dp"
+                        android:src="@drawable/avatar"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp" />
+                    <ProgressBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/avatar"
-                        android:tint="#777"
-                        android:layout_marginEnd="5dp"
-                        />
-
+                        android:id="@+id/progressBar"
+                        android:layout_gravity="center" />
                     <TextView
+                        android:id="@+id/authorView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_toRightOf="@+id/avatar"
-                        android:text="Nombre Proveedor"
+                        android:layout_toEndOf="@+id/avatar"
                         android:layout_centerInParent="true"
-                        android:id="@+id/textView" />
+                        />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -71,20 +71,22 @@
                     android:layout_below="@+id/linearLayout"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
                     android:id="@+id/linearLayout2">
 
                     <TextView
+                        android:id="@+id/newsTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Esta es una noticia"
-                        android:id="@+id/newsTitle" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
                         android:id="@+id/newsBody" />
 
                     <Button
@@ -92,69 +94,62 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/buttonInformation"
                         android:layout_gravity="right"
+                        android:layout_marginTop="10dp"
                         android:text="Mas información"/>
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <TextView
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/news_cardview2"
+            card_view:cardCornerRadius="2dp"
             android:layout_below="@+id/news_cardview"
-            android:text="¿La noticia habla BIEN o MAL del tema?"
-            android:id="@+id/textView3"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/likeZone"
-            android:weightSum="2">
+            card_view:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                >
 
-                <Button
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_thumb_up"
-                    android:id="@+id/buttonLike"
-                    android:layout_gravity="center_horizontal"
-                    android:text="BIEN"
-                    android:background="?android:attr/selectableItemBackground"
-                    />
+                    android:id="@+id/linearLayout3338"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    >
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Sea usted el crítico"
+                        android:id="@+id/textView33"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <include layout="@layout/news_detail_supports" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#bbbbbb"></LinearLayout>
+
+                <include layout="@layout/news_detail_opinion" />
 
             </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_thumb_down"
-                    android:id="@+id/buttonDislike"
-                    android:layout_gravity="center_horizontal"
-                    android:text="MAL"
-                    android:background="?android:attr/selectableItemBackground"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
     </RelativeLayout>
 </ScrollView>
 
