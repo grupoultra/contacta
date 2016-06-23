@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sur.ultra.contacta.Adapters.MessageAdapter;
@@ -207,7 +208,6 @@ public class ProviderDetailFragment extends Fragment {
             super.onPostExecute(result);
             dialog.dismiss();
 
-            /**/
             try {
                 JSONArray providerInfo = result.getJSONArray("provider");
                 JSONArray providerNews = result.getJSONArray("news");
@@ -237,8 +237,8 @@ public class ProviderDetailFragment extends Fragment {
                 authorView.setText(movieModel.info);
             } catch (JSONException e) {
                 e.printStackTrace();
-//            } catch (NullPointerException e){
-//                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
+            } catch (NullPointerException e){
+                Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
             }
         }
     }
