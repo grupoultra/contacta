@@ -119,7 +119,7 @@ public class ProviderDetailFragment extends Fragment {
         dialog = new ProgressDialog(getContext());
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
-        dialog.setMessage("Cargando proveedores");
+        dialog.setMessage("Cargando proveedor");
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.toolbar_layout);
         authorView = (TextView) view.findViewById(R.id.provider_info);
