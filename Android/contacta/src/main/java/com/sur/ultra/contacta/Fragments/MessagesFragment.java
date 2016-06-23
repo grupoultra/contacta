@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
     OnMessageSelectedListener mCallback;
     private ProgressDialog dialog;
     private RecyclerView lMessages;
+    private List<Message> messages = new ArrayList<Message>();
 
+    private static final String TAG = "MessagesFragment";
 
     // Container Activity must implement this interface
     public interface OnMessageSelectedListener {
@@ -97,13 +100,29 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
         int messageType = getArguments().getInt(MESSAGE_TYPE);
 
-        if(messageType == 0){
-            new GetAllMessages().execute(API_URIS.allNews());
-        } else{
-            new GetAllMessages().execute(API_URIS.allMessages());
+        if(messages.size() == 0){
+            if(messageType == 0){
+                new GetAllMessages().execute(API_URIS.allNews());
+            } else{
+                new GetAllMessages().execute(API_URIS.allMessages());
+            }
+        } else {
+            populateAdapter(messages);
         }
 
         return view;
+    }
+
+    public void populateAdapter(List<Message> messages){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        lMessages.setLayoutManager(layoutManager);
+
+        MessageAdapter adaptador;
+
+        adaptador = new MessageAdapter(messages, getActivity(), mCallback);
+
+        lMessages.setAdapter(adaptador);
+        lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
     }
 
     public class GetAllMessages extends AsyncTask<String,String, List<Message>> {
@@ -183,16 +202,8 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
             super.onPostExecute(result);
             dialog.dismiss();
             if(result != null) {
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                lMessages.setLayoutManager(layoutManager);
-
-                MessageAdapter adaptador;
-
-                adaptador = new MessageAdapter(result, getActivity(), mCallback);
-
-                lMessages.setAdapter(adaptador);
-                lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
-
+                messages.addAll(result);
+                populateAdapter(result);
             } else {
                 Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
             }
