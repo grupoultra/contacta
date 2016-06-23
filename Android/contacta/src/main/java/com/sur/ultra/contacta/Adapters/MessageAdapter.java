@@ -3,7 +3,6 @@ package com.sur.ultra.contacta.Adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.sur.ultra.contacta.Fragments.MessagesFragment;
+import com.sur.ultra.contacta.Interfaces.OnMessageSelectedListener;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
 
@@ -32,9 +31,9 @@ public class MessageAdapter
     private static final String TAG = "MessageAdapter";
     private final List<Message> messages;
     private Context ctx;
-    private MessagesFragment.OnMessageSelectedListener mCallback;
+    private OnMessageSelectedListener mCallback;
 
-    public MessageAdapter(List<Message> messages, Context ctx, MessagesFragment.OnMessageSelectedListener mCallback) {
+    public MessageAdapter(List<Message> messages, Context ctx, OnMessageSelectedListener mCallback) {
         this.messages = messages;
         this.ctx = ctx;
         this.mCallback = mCallback;
@@ -48,12 +47,12 @@ public class MessageAdapter
         public TextView author;
         private List<Message> messages = new ArrayList<Message>();
         private Context ctx;
-        private MessagesFragment.OnMessageSelectedListener mCallback;
+        private OnMessageSelectedListener mCallback;
         public ProgressBar progressBar;
 
         Button dismissButton;
 
-        public ViewHolder(View v, Context ctx, List<Message> messages, MessagesFragment.OnMessageSelectedListener mCallback) {
+        public ViewHolder(View v, Context ctx, List<Message> messages, OnMessageSelectedListener mCallback) {
             super(v);
             this.messages = messages;
             this.ctx = ctx;

@@ -12,7 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -22,14 +21,14 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.sur.ultra.contacta.Fragments.InboxFragment;
 import com.sur.ultra.contacta.Fragments.InitializationFragment;
-import com.sur.ultra.contacta.Fragments.MessagesFragment;
 import com.sur.ultra.contacta.Fragments.NewsDetailFragment;
+import com.sur.ultra.contacta.Interfaces.OnMessageSelectedListener;
 import com.sur.ultra.contacta.Fragments.ProviderDetailFragment;
 import com.sur.ultra.contacta.Fragments.ProvidersFragment;
 import com.sur.ultra.contacta.Fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements MessagesFragment.OnMessageSelectedListener,
+        implements OnMessageSelectedListener,
                    ProvidersFragment.OnProviderSelectedListener {
 
     private DrawerLayout drawerLayout;

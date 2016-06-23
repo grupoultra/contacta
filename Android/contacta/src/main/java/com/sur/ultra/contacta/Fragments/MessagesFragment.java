@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sur.ultra.contacta.Adapters.MessageAdapter;
+import com.sur.ultra.contacta.Interfaces.OnMessageSelectedListener;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
 import com.sur.ultra.contacta.Util.API_URIS;
@@ -41,12 +42,14 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
     OnMessageSelectedListener mCallback;
     private ProgressDialog dialog;
     private RecyclerView lMessages;
+    private List<Message> messages = new ArrayList<Message>();
 
+    private static final String TAG = "MessagesFragment";
 
-    // Container Activity must implement this interface
-    public interface OnMessageSelectedListener {
-        void onMessageSelected(int position, String type);
-    }
+//    // Container Activity must implement this interface
+//    public interface OnMessageSelectedListener {
+//        void onMessageSelected(int position, String type);
+//    }
 
     public MessagesFragment() {
 
@@ -84,9 +87,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragments_recycler_view, container, false);
 
-        RecyclerView reciclador = (RecyclerView)view.findViewById(R.id.recicler);
+//        RecyclerView recycler = (RecyclerView)view.findViewById(R.id.recicler);
         LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
-        reciclador.setLayoutManager(linearLayout);
+//        recycler.setLayoutManager(linearLayout);
 
         dialog = new ProgressDialog(getContext());
         dialog.setIndeterminate(true);
@@ -97,13 +100,30 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
         int messageType = getArguments().getInt(MESSAGE_TYPE);
 
-        if(messageType == 0){
-            new GetAllMessages().execute(API_URIS.allNews());
-        } else{
-            new GetAllMessages().execute(API_URIS.allMessages());
-        }
+//        TODO: implementar un metodo para refrescar los mensajes y rehabilitar este condicional
+//        if(messages.size() == 0){
+            if(messageType == 0){
+                new GetAllMessages().execute(API_URIS.allNews());
+            } else{
+                new GetAllMessages().execute(API_URIS.allMessages());
+            }
+//        } else {
+//            populateAdapter(messages);
+//        }
 
         return view;
+    }
+
+    public void populateAdapter(List<Message> messages){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        lMessages.setLayoutManager(layoutManager);
+
+        MessageAdapter adaptador;
+
+        adaptador = new MessageAdapter(messages, getActivity(), mCallback);
+
+        lMessages.setAdapter(adaptador);
+        lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
     }
 
     public class GetAllMessages extends AsyncTask<String,String, List<Message>> {
@@ -183,16 +203,8 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
             super.onPostExecute(result);
             dialog.dismiss();
             if(result != null) {
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                lMessages.setLayoutManager(layoutManager);
-
-                MessageAdapter adaptador;
-
-                adaptador = new MessageAdapter(result, getActivity(), mCallback);
-
-                lMessages.setAdapter(adaptador);
-                lMessages.addItemDecoration(new DecoracionLineaDivisoria(getActivity()));
-
+                messages.addAll(result);
+                populateAdapter(result);
             } else {
                 Toast.makeText(getContext(), "Not able to fetch data from server, please check url.", Toast.LENGTH_SHORT).show();
             }
