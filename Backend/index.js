@@ -3,7 +3,7 @@
 
 var config = require('./config.json');
 var _ = require('lodash');
-var Q = require('q');
+var loremIpsum = require('lorem-ipsum');
 
 var aws = require('aws-sdk');
 aws.config.update({
@@ -15,309 +15,132 @@ aws.config.setPromisesDependency(require('q').Promise);
 
 exports.handler = function( event, context ) {
 
-  var dummyInfo  =
-    "Cras mollis ipsum nec leo finibus, non pulvinar nisl scelerisque. Sed mi quam, facilisis" +
-    "quis ipsum ut, placerat interdum risus. Nullam mattis condimentum diam vel lacinia. Cum soci" +
-    "is natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla consequa" +
-    "t ligula eu suscipit scelerisque. Donec semper neque ac nibh consequat facilisis. Duis maxim" +
-    "us ullamcorper feugiat. Nam accumsan arcu eget magna iaculis, eu porta velit varius. Ut bibe" +
-    "ndum nunc ut nisi ullamcorper dignissim." + "\n\n" +
-
-    "Aliquam non magna est. Fusce vulputate pellentesque massa vitae scelerisque. Phasellus a" +
-    "arcu vitae tortor commodo sollicitudin. Interdum et malesuada fames ac ante ipsum primis in" +
-    "faucibus. Quisque feugiat nisi sit amet nunc consectetur lobortis. Suspendisse mattis euismo" +
-    "d nulla, at egestas ligula sodales non. Donec egestas a diam eget sodales. Suspendisse poten" +
-    "ti. In tincidunt nisl et mollis ultrices. Curabitur ultrices tempor luctus." + "\n\n" +
-
-    "Aenean tincidunt vel tellus id laoreet. Aenean ac purus ac sapien molestie aliquet suscipit" +
-    "id turpis. Aliquam vitae eleifend ligula. In convallis feugiat scelerisque. Phasellus ut pel" +
-    "lentesque sapien. Ut sollicitudin neque purus, at convallis quam consequat sit amet. Vivamus" +
-    "cursus nisi at luctus pellentesque.";
-
-  var messages = {
-    "messages": [
-      {
-        "id": 1,
-        "title": "News 1",
-        "body": "News 1 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "LaIguana",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
-        "type": "message"
-
-      },
-      {
-        "id": 2,
-        "title": "News 2",
-        "body": "News 2 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Banco Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "message"
-
-      },
-      {
-        "id": 3,
-        "title": "News 3",
-        "body": "News 3 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "GMVV",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
-        "type": "message"
-
-      },
-      {
-        "id": 4,
-        "title": "News 4",
-        "body": "News 4 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
-        "type": "message"
-
-      }
-    ]
+  var providersJSON = {
+    "providers": []
+  };
+  var messagesJSON = {
+    "messages": []
+  };
+  var newsJSON = {
+    "news": []
   };
 
-  var news = {
-    "news": [
-      {
-        "id": 1,
-        "title": "News 1",
-        "body": "News 1 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "LaIguana",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
-        "type": "news"
+  var dummyInfo = loremIpsum({count: 3, units: 'paragraphs', format: 'plain'});
 
-      },
-      {
-        "id": 2,
-        "title": "News 2",
-        "body": "News 2 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Banco Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
+  var providersNames = [
+    'Banco Mercantil',
+    'Cantv',
+    'Movistar de Venezuela',
+    'GMVV',
+    'LaIguana',
+    'Banco Provincial',
+    'Televen',
+    'Ministerio de Ambiente',
+    'Globovision',
+    'Empresas Polar'
+  ];
 
-      },
-      {
-        "id": 3,
-        "title": "News 3",
-        "body": "News 3 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "GMVV",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 4,
-        "title": "News 4",
-        "body": "News 4 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 5,
-        "title": "News 5",
-        "body": "News 5 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Banco Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 6,
-        "title": "News 6",
-        "body": "News 6 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Movistar de Venezuela",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Movistar.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 7,
-        "title": "News 7",
-        "body": "News 7 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "GMVV",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 8,
-        "title": "News 8",
-        "body": "News 8 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "LaIguana",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 9,
-        "title": "News 9",
-        "body": "News 9 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Cantv",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 10,
-        "title": "News 10",
-        "body": "News 10 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 11,
-        "title": "News 11",
-        "body": "News 11 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 12,
-        "title": "News 12",
-        "body": "News 12 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 13,
-        "title": "News 13",
-        "body": "News 13 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      },
-      {
-        "id": 14,
-        "title": "News 14",
-        "body": "News 14 \n\n" + dummyInfo,
-        "date": new Date(),
-        "name": "Mercantil",
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg",
-        "type": "news"
-
-      }
-    ]
+  var getAMessageJSON = function(id, authorName, type){
+    return {
+      "id": id,
+      "title": type + " " + id,
+      "body": type + " " + id + "\n\n" + dummyInfo,
+      "date": new Date(),
+      "name": authorName,
+      "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_"+ authorName.replace(/ /g,'') +".jpg",
+      "type": type.toLowerCase()
+    };
   };
 
-  var providers = {
-    "providers": [
-      {
-        "id": 1,
-        "name": "Banco Mercantil",
-        "info": "Banco Mercantil Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Mercantil.jpg"
-      },
-      {
-        "id": 2,
-        "name": "Cantv",
-        "info": "Cantv Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Cantv.jpg"
-      },
-      {
-        "id": 3,
-        "name": "Movistar de Venezuela",
-        "info": "Movistar de Venezuela Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Movistar.jpg"
-      },
-      {
-        "id": 4,
-        "name": "GMVV",
-        "info": "GMVV Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_GMVV.jpg"
-      },
-      {
-        "id": 5,
-        "name": "LaIguana.TV",
-        "info": "LaIguana.TV Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_LaIguana.jpg"
-      },
-      {
-        "id": 6,
-        "name": "Banco Provincial",
-        "info": "Banco Provincial Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Provincial.jpg"
-      },
-      {
-        "id": 7,
-        "name": "Televen",
-        "info": "Televen Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Televen.jpg"
-      },
-      {
-        "id": 8,
-        "name": "Ministerio de Ambiente",
-        "info": "Ministerio de Ambiente Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_MinAmbiente.jpg"
-      },
-      {
-        "id": 9,
-        "name": "Globovision",
-        "info": "Globovision Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_Globovision.jpg"
-      },
-      {
-        "id": 10,
-        "name": "Empresas Polar",
-        "info": "Empresas Polar Info\n\n" + dummyInfo,
-        "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_EmpresasPolar.jpg"
-      }
-    ]
+  var addANews = function (authorName) {
+    var id = newsJSON.news.length + 1;
+    var title = "News " + id;
+    var news = getAMessageJSON(id, authorName, 'News');
+
+    newsJSON.news.push(news);
   };
+  var addAMessage = function (authorName) {
+    var id = messagesJSON.messages.length + 1;
+    var title = "Message " + id;
+    var message = getAMessageJSON(id, authorName, 'Message');
+
+    messagesJSON.messages.push(message);
+  };
+
+  var addAProvider = function (name) {
+    var provider = {
+      "id": providersJSON.providers.length + 1,
+      "name": name,
+      "info": name + " Info\n\n" + dummyInfo,
+      "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_"+ name.replace(/ /g,'') +".jpg"
+    };
+    providersJSON.providers.push(provider);
+  };
+
+  var getAProviderJSON = function(id){
+    var providerInfo = _.filter(providersJSON.providers, _.matches({ 'id': parseInt(id)}));
+    var news = [];
+    var messages = [];
+
+    _.times(5, function(){
+      var id = news.length + 1;
+      news.push(getAMessageJSON(id, providersNames[id-1], 'News'));
+    });
+
+    _.times(2, function(){
+      var id = messages.length + 1;
+      messages.push(getAMessageJSON(id, providersNames[id-1], 'Message'));
+    });
+
+    return {
+      "provider": providerInfo,
+      "news": news,
+      "messages": messages
+    };
+  };
+
+  _.forEach(providersNames, function(name){
+    addAProvider(name);
+  });
+
+  _.times(5, function(){
+    addAMessage(_.sample(providersNames));
+  });
+
+  _.times(30, function(){
+    addANews(_.sample(providersNames));
+  });
 
   var resource_path = event.context['resource-path'];
 
   switch (resource_path){
     case "/news":
-      console.log(news);
-      context.done(null, news);
+      console.log(newsJSON);
+      context.done(null, newsJSON);
       break;
     case "/news/{id}":
       var id = event.params.path.id;
-      context.done(null, { "news": _.filter(news.news, _.matches({ 'id': parseInt(id)}))});
+      context.done(null, { "news": _.filter(newsJSON.news, _.matches({ 'id': parseInt(id)}))});
       break;
     case "/providers/{id}":
       var id = event.params.path.id;
-      context.done(null, { "provider": _.filter(providers.providers, _.matches({ 'id': parseInt(id)}))})
+      console.log(getAProviderJSON(id));
+      context.done(null, getAProviderJSON(id));
       break;
     case "/providers":
-      console.log(providers);
-      context.done(null, providers);
+      console.log(providersJSON);
+      context.done(null, providersJSON);
       break;
     case "/messages/{id}":
       var id = event.params.path.id;
-      context.done(null, { "message": _.filter(providers.providers, _.matches({ 'id': parseInt(id)}))})
+      context.done(null, { "message": _.filter(providersJSON.providers, _.matches({ 'id': parseInt(id)}))});
       break;
     case "/messages":
-      console.log(messages);
-      context.done(null, messages);
+      console.log(messagesJSON);
+      context.done(null, messagesJSON);
       break;
     default:
-          context.done(null, event);
-          break;
+      context.done(null, event);
+      break;
   }
 };
