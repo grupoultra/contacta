@@ -54,14 +54,12 @@ exports.handler = function( event, context ) {
 
   var addANews = function (authorName) {
     var id = newsJSON.news.length + 1;
-    var title = "News " + id;
     var news = getAMessageJSON(id, authorName, 'News');
 
     newsJSON.news.push(news);
   };
   var addAMessage = function (authorName) {
     var id = messagesJSON.messages.length + 1;
-    var title = "Message " + id;
     var message = getAMessageJSON(id, authorName, 'Message');
 
     messagesJSON.messages.push(message);
@@ -72,7 +70,7 @@ exports.handler = function( event, context ) {
       "id": providersJSON.providers.length + 1,
       "name": name,
       "info": name + " Info\n\n" + dummyInfo,
-      "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_"+ name.replace(/ /g,'') +".jpg"
+      "avatar": "https://s3.amazonaws.com/contacta/avatarsContacta_"+ name.replace(/\s/g,'') +".jpg"
     };
     providersJSON.providers.push(provider);
   };
@@ -83,13 +81,13 @@ exports.handler = function( event, context ) {
     var messages = [];
 
     _.times(5, function(){
-      var id = news.length + 1;
-      news.push(getAMessageJSON(id, providersNames[id-1], 'News'));
+      var messageId = news.length + 1;
+      news.push(getAMessageJSON(messageId, providersNames[id-1], 'News'));
     });
 
     _.times(2, function(){
-      var id = messages.length + 1;
-      messages.push(getAMessageJSON(id, providersNames[id-1], 'Message'));
+      var messageId = messages.length + 1;
+      messages.push(getAMessageJSON(messageId, providersNames[id-1], 'Message'));
     });
 
     return {
@@ -112,6 +110,7 @@ exports.handler = function( event, context ) {
   });
 
   var resource_path = event.context['resource-path'];
+  var id;
 
   switch (resource_path){
     case "/news":
@@ -119,11 +118,11 @@ exports.handler = function( event, context ) {
       context.done(null, newsJSON);
       break;
     case "/news/{id}":
-      var id = event.params.path.id;
+      id = event.params.path.id;
       context.done(null, { "news": _.filter(newsJSON.news, _.matches({ 'id': parseInt(id)}))});
       break;
     case "/providers/{id}":
-      var id = event.params.path.id;
+      id = event.params.path.id;
       console.log(getAProviderJSON(id));
       context.done(null, getAProviderJSON(id));
       break;
@@ -132,7 +131,7 @@ exports.handler = function( event, context ) {
       context.done(null, providersJSON);
       break;
     case "/messages/{id}":
-      var id = event.params.path.id;
+      id = event.params.path.id;
       context.done(null, { "message": _.filter(providersJSON.providers, _.matches({ 'id': parseInt(id)}))});
       break;
     case "/messages":
