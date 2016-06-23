@@ -2,8 +2,10 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d7d7d7"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -39,12 +41,58 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.sur.ultra.contacta.ScrollingActivity">
 
-        <TextView
-            android:id="@+id/provider_info"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            />
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/provider_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardUseCompatPadding="true">
+                <TextView
+                    android:id="@+id/provider_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Provider Info"
+                    android:layout_margin="@dimen/text_margin"
+                    />
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/news_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/provider_card"
+                android:text="Noticias"
+                android:layout_margin="@dimen/text_margin"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reciclerNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/news_title"
+                android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@+id/messages_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reciclerNews"
+                android:text="Mensajes"
+                android:layout_margin="@dimen/text_margin"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reciclerMessages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/messages_title"
+                android:scrollbars="vertical" />
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

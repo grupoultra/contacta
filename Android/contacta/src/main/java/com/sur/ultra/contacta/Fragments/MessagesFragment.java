@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sur.ultra.contacta.Adapters.MessageAdapter;
+import com.sur.ultra.contacta.Interfaces.OnMessageSelectedListener;
 import com.sur.ultra.contacta.Models.Message;
 import com.sur.ultra.contacta.R;
 import com.sur.ultra.contacta.Util.API_URIS;
@@ -46,10 +46,10 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "MessagesFragment";
 
-    // Container Activity must implement this interface
-    public interface OnMessageSelectedListener {
-        void onMessageSelected(int position, String type);
-    }
+//    // Container Activity must implement this interface
+//    public interface OnMessageSelectedListener {
+//        void onMessageSelected(int position, String type);
+//    }
 
     public MessagesFragment() {
 
@@ -87,9 +87,9 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragments_recycler_view, container, false);
 
-        RecyclerView reciclador = (RecyclerView)view.findViewById(R.id.recicler);
+//        RecyclerView recycler = (RecyclerView)view.findViewById(R.id.recicler);
         LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
-        reciclador.setLayoutManager(linearLayout);
+//        recycler.setLayoutManager(linearLayout);
 
         dialog = new ProgressDialog(getContext());
         dialog.setIndeterminate(true);
