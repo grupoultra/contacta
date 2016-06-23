@@ -100,15 +100,16 @@ public class MessagesFragment extends android.support.v4.app.Fragment {
 
         int messageType = getArguments().getInt(MESSAGE_TYPE);
 
-        if(messages.size() == 0){
+//        TODO: implementar un metodo para refrescar los mensajes y rehabilitar este condicional
+//        if(messages.size() == 0){
             if(messageType == 0){
                 new GetAllMessages().execute(API_URIS.allNews());
             } else{
                 new GetAllMessages().execute(API_URIS.allMessages());
             }
-        } else {
-            populateAdapter(messages);
-        }
+//        } else {
+//            populateAdapter(messages);
+//        }
 
         return view;
     }
