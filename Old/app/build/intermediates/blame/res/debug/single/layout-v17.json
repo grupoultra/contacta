@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/alexis/Proyectos/Ultra/Contacta/app/build/intermediates/res/merged/debug/layout-v17/mr_media_route_list_item.xml",
+        "source": "/Users/alexis/Proyectos/Ultra/Contacta/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/res/layout-v17/mr_media_route_list_item.xml"
+    },
+    {
+        "merged": "/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/res/merged/debug/layout-v17/mr_media_route_list_item.xml",
+        "source": "/Users/alexis/.android/build-cache/8eb16f7c6b4815d70c0ad0b7774b714d602c0f70/output/res/layout-v17/mr_media_route_list_item.xml"
+    }
+]

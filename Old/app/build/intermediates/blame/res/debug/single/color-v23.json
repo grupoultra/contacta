@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/Users/alexis/.android/build-cache/abca5323a257afefaf315daeef6dcdd725ddecaf/output/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/Users/alexis/Proyectos/Ultra/Contacta/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/Users/alexis/Proyectos/Ultra/Contacta/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color-v23/abc_color_highlight_material.xml"
+    }
+]

@@ -1,0 +1,7 @@
+#Wed May 24 10:59:01 VET 2017
+base.0=/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_fa397bf137f6132f8cf4750be5b38d767d476968
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b3d1963ff87553466df1c587866101c3f788cfa0/classes.dex
+base.1=/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b3d1963ff87553466df1c587866101c3f788cfa0
+file.0=/Users/alexis/Proyectos/Ultra/Contacta/Old/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_fa397bf137f6132f8cf4750be5b38d767d476968/classes.dex
